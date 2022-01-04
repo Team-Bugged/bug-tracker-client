@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { registerUser } from "./ServerConnections";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [userName, setUserName] = useState("");
@@ -6,6 +8,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [disabledFlag, setDisabledFlag] = useState(true);
+  const navigate = useNavigate();
 
   let passwordMatch = password === confirmPassword ? true : false;
 
@@ -42,16 +45,19 @@ const RegisterForm = () => {
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
 
-    console.log(passwordMatch);
     if (!passwordMatch) {
       alert("Password and current password not matched");
     }
 
-    console.log(userName, email, password, confirmPassword);
-    setUserName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    registerUser(userName, email, password)
+      .then((statusCode) => {
+        if (statusCode === 200) {
+          navigate("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
