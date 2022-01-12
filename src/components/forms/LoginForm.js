@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { loginUser } from "./ServerConnections";
 import Cookies from "universal-cookie/es6";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabledFlag, setDisabledFlag] = useState(true);
   const cookies = new Cookies();
+  const navigate = useNavigate();
 
   const handleEmailChange = (input) => {
     setEmail(input.target.value);
@@ -21,6 +23,7 @@ const LoginForm = () => {
     loginUser(email, password)
       .then((token) => {
         cookies.set("token", `${token}`, { path: "/" });
+        navigate("/dashboard");
       })
       .catch((err) => {
         console.log(err);

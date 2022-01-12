@@ -7,6 +7,8 @@ const Welcome = () => {
       <Link to="/login">Login</Link>
       <br />
       <Link to="/Register">Register</Link>
+      <br />
+      <Link to="/Dashboard">DashBoard</Link>
     </>
   );
 };
