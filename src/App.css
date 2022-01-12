@@ -16,3 +16,14 @@
   height: 40px;
   margin: 5px;
 }
+
+.project-bar {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+}
+
+.project-bar div {
+  display: inline-block;
+}

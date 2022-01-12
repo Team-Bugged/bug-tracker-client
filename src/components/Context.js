@@ -1,23 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
-import Cookies from "universal-cookie/es6";
 import { getUserData } from "./ServerConnections";
 
 export const InfoContext = React.createContext();
 
 export const InfoProvider = ({ children }) => {
-  const cookies = new Cookies();
+  // const cookies = new Cookies();
   const [name, setName] = useState("");
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  if (!isLoggedIn) {
-    let obj = cookies.getAll();
-    const len = Object.keys(obj).length;
-    if (len > 0) {
-      getUserData(cookies.get("token")).then((data) => {
-        setName(data.userName);
-      });
-    }
-  }
+
+  // if (localStorage.getItem("token")) {
+  //   getUserData(localStorage.getItem("token")).then((data) => {
+  //     setName(data.userName);
+  //   });
+  //   setIsLoggedIn(true);
+  // }
+
+  // useEffect(() => {
+  //   console.log("isLoggedIn: ", isLoggedIn);
+  //   if (!isLoggedIn) {
+  //     localStorage.removeItem("token");
+  //   }
+  // }, [isLoggedIn]);
 
   return (
     <InfoContext.Provider value={{ name, setName, isLoggedIn, setIsLoggedIn }}>

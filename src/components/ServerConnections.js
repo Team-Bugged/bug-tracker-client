@@ -1,5 +1,3 @@
-import Cookies from "universal-cookie/es6";
-
 const axios = require("axios").default;
 
 export const registerUser = async (userName, userEmail, userPassword) => {
@@ -29,13 +27,13 @@ export const loginUser = async (userEmail, userPassword) => {
   }
 };
 
-export const getUserData = async (token) => {
+export const getUserData = async () => {
   let response;
-  const cookies = new Cookies();
+  console.log(localStorage.getItem("token"));
   try {
     response = await axios.get("http://localhost:5000/getInfo", {
       headers: {
-        authorization: "Bearer " + cookies.get("token"),
+        authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
     return response.data;
@@ -61,6 +59,20 @@ export const getBugData = async (id) => {
   try {
     response = await axios.get("http://localhost:5000/getBugInfo", {
       id: id,
+    });
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const getProjects = async () => {
+  let response;
+  try {
+    response = await axios.get("http://localhost:5000/getprojectsforauser", {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("token"),
+      },
     });
     return response.data;
   } catch (err) {
