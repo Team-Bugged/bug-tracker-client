@@ -1,0 +1,18 @@
+.navbar {
+  width: 100%;
+  height: 60px;
+  background-color: aqua;
+  display: flex;
+  justify-content: left;
+}
+
+.navbar-username {
+  display: inline-block;
+  margin: 5px;
+  font-size: larger;
+}
+
+.navbar-button {
+  height: 40px;
+  margin: 5px;
+}

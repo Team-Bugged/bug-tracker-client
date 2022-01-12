@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { registerUser } from "./ServerConnections";
+import { registerUser } from "../ServerConnections";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {

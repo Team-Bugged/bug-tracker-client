@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { loginUser } from "./ServerConnections";
+import { loginUser, getUserData } from "../ServerConnections";
 import Cookies from "universal-cookie/es6";
 import { useNavigate } from "react-router-dom";
+import { useInfoContext } from "../Context";
 
 const LoginForm = () => {
+  const { setName, setIsLoggedIn } = useInfoContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabledFlag, setDisabledFlag] = useState(true);
@@ -23,11 +25,16 @@ const LoginForm = () => {
     loginUser(email, password)
       .then((token) => {
         cookies.set("token", `${token}`, { path: "/" });
-        navigate("/dashboard");
       })
       .catch((err) => {
         console.log(err);
       });
+
+    getUserData().then((data) => {
+      setName(data.userName);
+      setIsLoggedIn(true);
+      navigate("/dashboard");
+    });
   };
 
   useEffect(() => {
