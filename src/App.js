@@ -1,9 +1,10 @@
-import { Route, Routes, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Welcome from "./pages/Welcome";
 import Project from "./pages/Project";
+import AddProject from "./pages/AddProject";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Route exact path="/register" element={<Register />} />
       <Route exact path="/dashboard" element={<Dashboard />} />
       <Route exact path="/project/:projectID" element={<Project />} />
+      <Route exact path="/addproject" element={<AddProject />} />
     </Routes>
   );
 };

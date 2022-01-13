@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 export const ProjectBar = ({
-  key,
+  projectID,
   projectTitle,
   projectStatus,
   projectStartDate,
@@ -9,7 +9,7 @@ export const ProjectBar = ({
 }) => {
   const navigate = useNavigate();
   const handleProjectClick = () => {
-    navigate(`/project/${key}`);
+    navigate(`/project/${projectID}`);
   };
   return (
     <>
@@ -17,8 +17,7 @@ export const ProjectBar = ({
         <div>{projectTitle}</div>
         <div>{projectStatus}</div>
         <div>{projectStartDate}</div>
-        <div>{projectOwner}</div> 
-        
+        <div>{projectOwner}</div>
       </div>
     </>
   );

@@ -8,6 +8,17 @@ export const InfoProvider = ({ children }) => {
   const [name, setName] = useState("");
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const loginCheck = () => {
+    if (localStorage.getItem("token")) {
+      getUserData().then((data) => {
+        setName(data.username);
+      });
+      setIsLoggedIn(true);
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -16,12 +27,16 @@ export const InfoProvider = ({ children }) => {
         console.log(data.username);
       });
       setIsLoggedIn(true);
+      console.log(isLoggedIn);
     }
+
     console.log("isLoggedIn: ", isLoggedIn);
   }, []);
 
   return (
-    <InfoContext.Provider value={{ name, setName, isLoggedIn, setIsLoggedIn }}>
+    <InfoContext.Provider
+      value={{ name, setName, isLoggedIn, setIsLoggedIn, loginCheck }}
+    >
       {children}
     </InfoContext.Provider>
   );
