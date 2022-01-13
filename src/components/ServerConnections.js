@@ -79,3 +79,17 @@ export const getProjects = async () => {
     return err;
   }
 };
+
+export const getBugs = async () => {
+  let response;
+  try {
+    response = await axios.get("http://localhost:5000/getbugsforauser", {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
