@@ -1,16 +1,28 @@
 :root {
   font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  padding: 0px 50px 0px 50px;
+  
+  
+}
+
+.jss17 {
+  
+  display: flex;
+  padding: 0.8em 1.5em;
+  align-items: center;
+  margin-bottom: 1em;
 }
 
 .project-bar {
-  height: 40px;
+  /* height: 40px; */
   display: flex;
   justify-content: space-between;
-  background-color: gray;
+  /* background-color: #328f8a; */
 }
 
 .bug-bar {
-  height: 40px;
+  /* height: 40px; */
   display: flex;
   justify-content: space-between;
   background-color: gold;
