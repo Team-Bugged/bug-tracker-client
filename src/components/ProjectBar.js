@@ -17,7 +17,8 @@ export const ProjectBar = ({
         <div>{projectTitle}</div>
         <div>{projectStatus}</div>
         <div>{projectStartDate}</div>
-        <div>{projectOwner}</div>
+        <div>{projectOwner}</div> 
+        
       </div>
     </>
   );

@@ -1,0 +1,100 @@
+[33mcommit 8d21efaefa5ccb4da4816c66c2fc6a8a438499d6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: d60ccd0 348e164
+Author: siddharthsharma19 <63955687+siddharthsharma19@users.noreply.github.com>
+Date:   Thu Jan 13 16:14:53 2022 +0530
+
+    Merge pull request #5 from siddharthsharma19/dashboard
+    
+    implement css loginform and registrationform
+
+[33mcommit 348e164a584a58a4cf6ca8b9d2d58ae1f2bfb9fb[m
+Author: siddharthsharma19 <sharmasiddharth017@gmail.com>
+Date:   Thu Jan 13 16:13:59 2022 +0530
+
+    implement css loginform and registrationform
+
+[33mcommit d60ccd0ae02f2c1af3cfd0ab21c73a818dc3a14b[m
+Merge: 2fed2ef ff90b43
+Author: Sahil <54836805+Sahil-101@users.noreply.github.com>
+Date:   Thu Jan 13 14:29:25 2022 +0530
+
+    Merge pull request #4 from Sahil-101/main
+    
+    add bugBar component
+
+[33mcommit ff90b4387f2dcb1be64b14bc5b9d1a41ecfc7622[m
+Author: Sahil-101 <sahilflash123@gmail.com>
+Date:   Thu Jan 13 14:27:55 2022 +0530
+
+    add bugBar component
+
+[33mcommit 2fed2ef20eb1423b97953d7b48d9baaf7249f07a[m
+Merge: 1190590 0e8906d
+Author: Sahil <54836805+Sahil-101@users.noreply.github.com>
+Date:   Thu Jan 13 01:29:37 2022 +0530
+
+    Merge pull request #3 from Sahil-101/main
+    
+    Main
+
+[33mcommit 0e8906d254d8750fa7be4b0445e90c13983b723b[m
+Author: Sahil-101 <sahilflash123@gmail.com>
+Date:   Thu Jan 13 01:27:56 2022 +0530
+
+    Add Dashboard and projects
+    
+    Co-authored-by: Siddharth Sharma <sharmasiddharth017@gmail.com>
+
+[33mcommit bfdf133e9c307ec783f9084fd75d70bf4964ac1d[m
+Author: Sahil-101 <sahilflash123@gmail.com>
+Date:   Wed Jan 12 21:30:26 2022 +0530
+
+    Add react context and Navbar
+
+[33mcommit 1190590166ecec40d2eabb2be73a13f2aa1e345c[m
+Merge: 8ec4012 c2f1944
+Author: siddharthsharma19 <63955687+siddharthsharma19@users.noreply.github.com>
+Date:   Wed Jan 12 17:27:47 2022 +0530
+
+    Merge pull request #2 from siddharthsharma19/dashboard
+    
+    dropdownbutton implement
+
+[33mcommit c2f194410071375ce51f1de4b702e6f8db5888de[m
+Author: siddharthsharma19 <sharmasiddharth017@gmail.com>
+Date:   Wed Jan 12 17:18:09 2022 +0530
+
+    dropdownbutton implement
+
+[33mcommit 8ec401257c28b2b6bcae7db75215a3dd2048681c[m
+Merge: c633280 3eca25c
+Author: Sahil <54836805+Sahil-101@users.noreply.github.com>
+Date:   Tue Jan 4 19:16:19 2022 +0530
+
+    Merge pull request #1 from Sahil-101/connection-to-databse
+    
+    Added ServerConnections functions with promises in return
+
+[33mcommit 3eca25cce1caeded8e0606f5400646d4f283a54e[m
+Author: Sahil-101 <sahilflash123@gmail.com>
+Date:   Tue Jan 4 19:11:03 2022 +0530
+
+    Added ServerConnections functions with promises in return
+
+[33mcommit c6332803057b1d3757beaebb40c43570b098e904[m
+Author: Sahil-101 <sahilflash123@gmail.com>
+Date:   Sat Jan 1 14:37:13 2022 +0530
+
+    Added Login, Register Pages and components
+
+[33mcommit f76f4aded4f4ea88bebd7cc3af4a04a2f884a245[m
+Author: Sahil-101 <sahilflash123@gmail.com>
+Date:   Thu Dec 30 22:30:34 2021 +0530
+
+    basic setup loginPage, WelcomPage
+
+[33mcommit 769e2c342fc14b9735f67cfc1dd34156fdb44a6c[m
+Author: Sahil-101 <sahilflash123@gmail.com>
+Date:   Thu Dec 30 21:38:45 2021 +0530
+
+    Initialize project using Create React App
