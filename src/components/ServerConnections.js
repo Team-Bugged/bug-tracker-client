@@ -1,10 +1,11 @@
 const axios = require("axios").default;
 
-export const registerUser = async (userName, userEmail, userPassword) => {
+export const registerUser = async (name, username, userEmail, userPassword) => {
   let response;
   try {
     response = await axios.post("http://localhost:5000/signup", {
-      name: userName,
+      name: name,
+      username: username,
       email: userEmail,
       password: userPassword,
     });

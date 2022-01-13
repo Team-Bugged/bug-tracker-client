@@ -31,7 +31,8 @@ const LoginForm = () => {
       });
 
     getUserData().then((data) => {
-      setName(data.userName);
+      setName(data.username);
+      console.log(data.username);
       navigate("/dashboard");
     });
   };
@@ -45,17 +46,47 @@ const LoginForm = () => {
 
   return (
     <>
-      <form>
-        <input type="text" placeholder="email" onChange={handleEmailChange} />
-        <input
-          type="password"
-          placeholder="password"
-          onChange={handlePasswordChange}
-        />
-        <button disabled={disabledFlag} onClick={handleLoginSubmit}>
-          Submit
-        </button>
-      </form>
+      <div className="login-page">
+        <div className="form">
+          <div className="login">
+            <div className="login-header">
+              <h3>LOGIN</h3>
+              <p>Please enter your credentials to login.</p>
+            </div>
+            <form className="login-form">
+              <div>
+                <label for="email">
+                  <b>EMail</b>
+                </label>
+                <br />
+                <input
+                  type="text"
+                  placeholder="email"
+                  name="email"
+                  onChange={handleEmailChange}
+                  required
+                />
+                <br />
+                <label for="password">
+                  <b>Password</b>
+                </label>
+                <br />
+                <input
+                  type="password"
+                  placeholder="password"
+                  name="password"
+                  onChange={handlePasswordChange}
+                  required
+                />
+                <br />
+                <button disabled={disabledFlag} onClick={handleLoginSubmit}>
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
