@@ -20,12 +20,6 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      {/* <div className="navbar">
-        <div className="navbar-username">{name}</div>
-        <button className="navbar-button" onClick={handleLogOut}>
-          Logout
-        </button>
-      </div> */}
     </>
   );
 };
