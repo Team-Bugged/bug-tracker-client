@@ -18,29 +18,36 @@ const ProjectsBugsDashboard = () => {
   return (
     <>
       <div className="project-bar">
-        <div>projectTitle</div>
-        <div>projectStatus</div>
-        <div>projectStartDate</div>
-        <div>projectOwner</div>
+        <div>Project Title</div>
+        <div>Project Status</div>
+        <div>Project StartDate</div>
+        <div>Project Owner</div>
       </div>
       {projectsArray.map((project) => (
         <ProjectBar
           key={project._id}
           projectTitle={project.projectTitle}
           projectStatus={project.projectStatus}
-          projectStartDate={project.StartDate}
+          projectStartDate={project.projectStartDate}
           projectOwner={project.projectOwner}
         />
       ))}
-      {bugsArray.map((bug) => {
+      <br />
+      <div className="project-bar">
+        <div>Bug Title</div>
+        <div>Bug Severity</div>
+        <div>Bug DueDate</div>
+        <div>Bug Created By</div>
+      </div>
+      {bugsArray.map((bug) => (
         <BugBar
           key={bug._id}
-          bugDescription={bug.bugDescription}
+          bugTitle={bug.bugTitle}
           bugSeverity={bug.bugSeverity}
           bugDueDate={bug.bugDueDate}
-          assignedTo={bug.assignedTo}
-        />;
-      })}
+          createdBy={bug.createdBy}
+        />
+      ))}
     </>
   );
 };

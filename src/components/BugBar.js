@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 
 export const BugBar = ({
   key,
-  bugDescription,
+  bugTitle,
   bugSeverity,
   bugDueDate,
-  assignedTo,
+  createdBy,
 }) => {
   const navigate = useNavigate();
   const handleProjectClick = () => {
@@ -14,10 +14,10 @@ export const BugBar = ({
   return (
     <>
       <div className="project-bar" onClick={handleProjectClick}>
-        <div>{bugDescription}</div>
+        <div>{bugTitle}</div>
         <div>{bugSeverity}</div>
         <div>{bugDueDate}</div>
-        <div>{assignedTo}</div>
+        <div>{createdBy}</div>
       </div>
     </>
   );

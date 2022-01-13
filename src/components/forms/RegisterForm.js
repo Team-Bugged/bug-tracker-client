@@ -3,7 +3,8 @@ import { registerUser } from "../ServerConnections";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-  const [userName, setUserName] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -13,9 +14,12 @@ const RegisterForm = () => {
   let passwordMatch = password === confirmPassword ? true : false;
 
   const handleNameChange = (input) => {
-    setUserName(input.target.value);
+    setName(input.target.value);
   };
 
+  const handleUserNameChange = (input) => {
+    setUserName(input.target.value);
+  };
   const handleEmailChange = (input) => {
     setEmail(input.target.value);
   };
@@ -33,14 +37,15 @@ const RegisterForm = () => {
 
     setDisabledFlag(false);
     if (
-      userName === "" ||
+      name === "" ||
+      username === "" ||
       email === "" ||
       password === "" ||
       confirmPassword === ""
     ) {
       setDisabledFlag(true);
     }
-  }, [userName, email, password, confirmPassword, disabledFlag]);
+  }, [name, username, email, password, confirmPassword, disabledFlag]);
 
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
@@ -49,7 +54,7 @@ const RegisterForm = () => {
       alert("Password and current password not matched");
     }
 
-    registerUser(userName, email, password)
+    registerUser(name, username, email, password)
       .then((statusCode) => {
         if (statusCode === 200) {
           navigate("/login");
@@ -61,12 +66,91 @@ const RegisterForm = () => {
   };
   return (
     <>
+      <div className="login-page">
+        <div className="form">
+          <div className="login">
+            <div className="login-header">
+              <h3>Register</h3>
+              <p>Please enter your credentials to register.</p>
+            </div>
+            <form className="login-form">
+              <div>
+                <label for="name">
+                  <b>Name</b>
+                </label>
+                <input
+                  type="text"
+                  placeholder="name"
+                  value={name}
+                  onChange={handleNameChange}
+                  name="name"
+                  required
+                />
+                <label for="username">
+                  <b>UserName</b>
+                </label>
+                <input
+                  type="text"
+                  placeholder="username"
+                  value={username}
+                  onChange={handleUserNameChange}
+                  name="username"
+                  required
+                />
+                <label for="email">
+                  <b>EMail</b>
+                </label>
+                <input
+                  type="text"
+                  placeholder="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  name="email"
+                  required
+                />
+                <label for="password">
+                  <b>Password</b>
+                </label>
+                <input
+                  type="password"
+                  placeholder="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  name="password"
+                  required
+                />
+                <label for="confirmpassword">
+                  <b>Confirm Password</b>
+                </label>
+                <input
+                  type="password"
+                  placeholder="confirm password"
+                  value={confirmPassword}
+                  onChange={handleConfirmPasswordChange}
+                  name="confirmpassword"
+                  required
+                />
+                <button disabled={disabledFlag} onClick={handleRegisterSubmit}>
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {/* 
       <form>
         <input
           type="text"
           placeholder="name"
-          value={userName}
+          value={name}
           onChange={handleNameChange}
+        />
+        <input
+          type="text"
+          placeholder="username"
+          value={username}
+          onChange={handleUserNameChange}
         />
         <input
           type="text"
@@ -89,7 +173,7 @@ const RegisterForm = () => {
         <button disabled={disabledFlag} onClick={handleRegisterSubmit}>
           Submit
         </button>
-      </form>
+      </form> */}
     </>
   );
 };
