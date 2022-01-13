@@ -9,6 +9,13 @@
   background-color: #328f8a;
 }
 
+.bug-bar {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  background-color: gold;
+}
+
 .project-bar div {
   display: inline-block;
 }

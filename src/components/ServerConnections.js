@@ -72,9 +72,10 @@ export const getProjects = async () => {
   try {
     response = await axios.get("http://localhost:5000/getprojectsforauser", {
       headers: {
-        authorization: "Bearer " + localStorage.getItem("token"),
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
+    console.log(response.data);
     return response.data;
   } catch (err) {
     return err;
@@ -86,9 +87,10 @@ export const getBugs = async () => {
   try {
     response = await axios.get("http://localhost:5000/getbugsforauser", {
       headers: {
-        authorization: "Bearer " + localStorage.getItem("token"),
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
+    console.log(response.data);
     return response.data;
   } catch (err) {
     return err;

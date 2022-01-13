@@ -25,16 +25,16 @@ const LoginForm = () => {
       .then((token) => {
         localStorage.setItem("token", `${token}`);
         setIsLoggedIn(true);
+        console.log(localStorage.getItem("token"));
+        getUserData().then((data) => {
+          setName(data.username);
+          console.log(data.username);
+          navigate("/dashboard");
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-
-    getUserData().then((data) => {
-      setName(data.username);
-      console.log(data.username);
-      navigate("/dashboard");
-    });
   };
 
   useEffect(() => {
