@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getProjects, getBugs } from "./ServerConnections";
 import { ProjectBar } from "./ProjectBar";
 import { BugBar } from "./BugBar";
@@ -7,13 +7,15 @@ const ProjectsBugsDashboard = () => {
   const [projectsArray, setProjectsArray] = useState([]);
   const [bugsArray, setBugsArray] = useState([]);
 
-  getProjects().then((data) => {
-    setProjectsArray(data);
-  });
+  useEffect(() => {
+    getProjects().then((data) => {
+      setProjectsArray(data);
+    });
 
-  getBugs().then((data) => {
-    setBugsArray(data);
-  });
+    getBugs().then((data) => {
+      setBugsArray(data);
+    });
+  }, []);
 
   return (
     <>
@@ -42,6 +44,7 @@ const ProjectsBugsDashboard = () => {
       {bugsArray.map((bug) => (
         <BugBar
           key={bug._id}
+          bugID={bug._id}
           bugTitle={bug.bugTitle}
           bugSeverity={bug.bugSeverity}
           bugDueDate={bug.bugDueDate}

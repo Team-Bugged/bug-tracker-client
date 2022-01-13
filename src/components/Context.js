@@ -9,19 +9,16 @@ export const InfoProvider = ({ children }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // if (localStorage.getItem("token")) {
-  //   getUserData(localStorage.getItem("token")).then((data) => {
-  //     setName(data.userName);
-  //   });
-  //   setIsLoggedIn(true);
-  // }
-
-  // useEffect(() => {
-  //   console.log("isLoggedIn: ", isLoggedIn);
-  //   if (!isLoggedIn) {
-  //     localStorage.removeItem("token");
-  //   }
-  // }, [isLoggedIn]);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      getUserData().then((data) => {
+        setName(data.username);
+        console.log(data.username);
+      });
+      setIsLoggedIn(true);
+    }
+    console.log("isLoggedIn: ", isLoggedIn);
+  }, []);
 
   return (
     <InfoContext.Provider value={{ name, setName, isLoggedIn, setIsLoggedIn }}>

@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
 import { getProjectData } from "../components/ServerConnections";
 import { BugBar } from "../components/BugBar";
+import { useEffect } from "react";
 
 const Project = () => {
   const params = useParams();
   const project = {};
-  getProjectData(params.projectID).then((data) => {
-    project = data;
-  });
+  useEffect(() => {
+    getProjectData(params.projectID).then((data) => {
+      project = data;
+    });
+  }, []);
 
   return (
     <>
@@ -17,7 +20,7 @@ const Project = () => {
       <div>
         <p>{project.projectDescription}</p>
       </div>
-      {project.bugs.map((bug) => {
+      {project.bugs?.map((bug) => {
         <BugBar
           key={bug._id}
           bugDescription={bug.bugDescription}
