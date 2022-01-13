@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { getProjects } from "./ServerConnections";
+import { getProjects, getBugs } from "./ServerConnections";
 import { ProjectBar } from "./ProjectBar";
+import { BugBar } from "./BugBar";
 
 const ProjectsBugsDashboard = () => {
   const [projectsArray, setProjectsArray] = useState([]);
+  const [bugsArray, setBugsArray] = useState([]);
 
   getProjects().then((data) => {
     setProjectsArray(data);
+  });
+
+  getBugs().then((data) => {
+    setBugsArray(data);
   });
 
   return (
@@ -26,6 +32,15 @@ const ProjectsBugsDashboard = () => {
           projectOwner={project.projectOwner}
         />
       ))}
+      {bugsArray.map((bug) => {
+        <BugBar
+          key={bug._id}
+          bugDescription={bug.bugDescription}
+          bugSeverity={bug.bugSeverity}
+          bugDueDate={bug.bugDueDate}
+          assignedTo={bug.assignedTo}
+        />;
+      })}
     </>
   );
 };

@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-export const ProjectBar = ({
+export const BugBar = ({
   key,
-  projectTitle,
-  projectStatus,
-  projectStartDate,
-  projectOwner,
+  bugDescription,
+  bugSeverity,
+  bugDueDate,
+  assignedTo,
 }) => {
   const navigate = useNavigate();
   const handleProjectClick = () => {
@@ -14,10 +14,10 @@ export const ProjectBar = ({
   return (
     <>
       <div className="project-bar" onClick={handleProjectClick}>
-        <div>{projectTitle}</div>
-        <div>{projectStatus}</div>
-        <div>{projectStartDate}</div>
-        <div>{projectOwner}</div>
+        <div>{bugDescription}</div>
+        <div>{bugSeverity}</div>
+        <div>{bugDueDate}</div>
+        <div>{assignedTo}</div>
       </div>
     </>
   );

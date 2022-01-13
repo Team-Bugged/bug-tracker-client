@@ -4,7 +4,7 @@ import { useInfoContext } from "../Context";
 const Navbar = () => {
   const { name, setIsLoggedIn } = useInfoContext();
   const handleLogOut = () => {
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
     console.log("accha!");
   };
   return (
