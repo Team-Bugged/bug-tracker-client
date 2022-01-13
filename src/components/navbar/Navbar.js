@@ -1,11 +1,14 @@
 import "../../App.css";
 import { useInfoContext } from "../Context";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { name, setIsLoggedIn } = useInfoContext();
   const handleLogOut = () => {
     localStorage.removeItem("token");
-    console.log("accha!");
+    setIsLoggedIn(false);
+    navigate("/login");
   };
   return (
     <>
