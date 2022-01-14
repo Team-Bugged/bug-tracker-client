@@ -158,3 +158,25 @@ export const addBug = async (
     return err;
   }
 };
+
+export const deleteProject = async (projectID, bugs) => {
+  let response;
+  try {
+    response = await axios.post(
+      "http://localhost:5000/deleteproject",
+      {
+        projectID: projectID,
+        bugs: bugs
+      },
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
