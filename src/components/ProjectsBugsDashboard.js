@@ -11,32 +11,30 @@ import {
   TableCell,
   Link,
   Paper,
-} from '@mui/material';
+} from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import AddIcon from '@mui/icons-material/Add';
-import BugReportIcon from '@mui/icons-material/BugReport';
+import AddIcon from "@mui/icons-material/Add";
+import BugReportIcon from "@mui/icons-material/BugReport";
 import Button from "@mui/material/Button";
 
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { handleBreakpoints } from "@mui/system";
 
-const ProjectsBugsDashboard=()=> {
-  const projectTableHeaders = ['Name', 'Status', 'Created on', 'Owner', 'Bugs'];
-  const bugTableHeaders = ['Title', 'Severity', 'Created By', 'Due Date'];
+const ProjectsBugsDashboard = () => {
+  const projectTableHeaders = ["Name", "Status", "Created on", "Owner", "Bugs"];
+  const bugTableHeaders = ["Title", "Severity", "Created By", "Due Date"];
   const [projectsArray, setProjectsArray] = useState([]);
   const [bugsArray, setBugsArray] = useState([]);
-
- 
 
   const navigate = useNavigate();
   const handleProjectClick = (projectID) => {
     navigate(`/project/${projectID}`);
   };
   const handleBugClick = (bugID) => {
-    navigate(`/project/${bugID}`);
+    navigate(`/bug/${bugID}`);
   };
   const handleAddProject = () => {
     navigate("/addproject");
@@ -54,93 +52,82 @@ const ProjectsBugsDashboard=()=> {
 
   return (
     <>
-    <Paper className="jss17" variant="outlined">
+      <Paper className="jss17" variant="outlined">
         <AssignmentIcon fontSize="large" color="primary" />
 
         <div className="detaildiv">
-          <Typography variant="h6" >
-            All Projects
-          </Typography>
+          <Typography variant="h6">All Projects</Typography>
           <Typography variant="subtitle1">
             List of all the created or joined projects.
           </Typography>
         </div>
-        
       </Paper>
       <Paper className="detailpaper" variant="outlined">
-      <button class="addproject" onClick={handleAddProject}>
-      <AddIcon fontSize="small"/>Add Project</button>
-      <Table>
-        <TableHead>
-          <TableRow className="mainrow">
-            {projectTableHeaders.map((t) => (
-              <TableCell key={t} align="center">
-                {t}
-              </TableCell>
+        <button class="addproject" onClick={handleAddProject}>
+          <AddIcon fontSize="small" />
+          Add Project
+        </button>
+        <Table>
+          <TableHead>
+            <TableRow className="mainrow">
+              {projectTableHeaders.map((t) => (
+                <TableCell key={t} align="center">
+                  {t}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {projectsArray.map((project) => (
+              <TableRow
+                key={project._id}
+                onClick={() => handleProjectClick(project._id)}
+              >
+                <TableCell align="center">{project.projectTitle}</TableCell>
+                <TableCell align="center">{project.projectStatus}</TableCell>
+                <TableCell align="center">{project.projectStartDate}</TableCell>
+                <TableCell align="center">{project.projectOwner}</TableCell>
+                <TableCell align="center">{project.bugs.length}</TableCell>
+              </TableRow>
             ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {projectsArray.map((project) => (
-                               
-                  <TableRow key={project._id} onClick={()=>handleProjectClick(project._id)}>
-                  
-                  <TableCell  align="center">{project.projectTitle}</TableCell>
-                  <TableCell align="center">{project.projectStatus}</TableCell>
-                  <TableCell align="center">{project.projectStartDate}</TableCell>
-                  <TableCell align="center">{project.projectOwner}</TableCell>
-                  <TableCell align="center">{project.bugs.length}</TableCell>
-                  </TableRow>
-         ))}          
-        </TableBody>
-      </Table>
-    </Paper>
+          </TableBody>
+        </Table>
+      </Paper>
 
-    <Paper className="jss17" variant="outlined">
+      <Paper className="jss17" variant="outlined">
         <BugReportIcon fontSize="large" color="error" />
 
         <div className="detaildiv">
-          <Typography variant="h6" >
-            Bugs
-          </Typography>
+          <Typography variant="h6">Bugs</Typography>
           <Typography variant="subtitle1">
             List of all bugs created by or assigned to user.
           </Typography>
         </div>
-        
       </Paper>
       <Paper className="detailpaper" variant="outlined">
-
-      <Table>
-        <TableHead>
-          <TableRow className="mainbugrow">
-            {bugTableHeaders.map((t) => (
-              <TableCell key={t} align="center">
-                {t}
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {bugsArray.map((bug) => (
-              <TableRow key={bug._id} onClick={()=>handleBugClick(bug._id)}>
-                  
-              <TableCell  align="center">{bug.bugTitle}</TableCell>
-              <TableCell align="center">{bug.bugSeverity}</TableCell>
-              <TableCell align="center">{bug.createdBy}</TableCell>
-              <TableCell align="center">{bug.bugDueDate}</TableCell>
+        <Table>
+          <TableHead>
+            <TableRow className="mainbugrow">
+              {bugTableHeaders.map((t) => (
+                <TableCell key={t} align="center">
+                  {t}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {bugsArray.map((bug) => (
+              <TableRow key={bug._id} onClick={() => handleBugClick(bug._id)}>
+                <TableCell align="center">{bug.bugTitle}</TableCell>
+                <TableCell align="center">{bug.bugSeverity}</TableCell>
+                <TableCell align="center">{bug.createdBy}</TableCell>
+                <TableCell align="center">{bug.bugDueDate}</TableCell>
               </TableRow>
-     ))}    
-                               
-                  
-        </TableBody>
-      </Table>
-    </Paper>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
 
-
-
-
-      
       {/* <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
@@ -194,8 +181,6 @@ const ProjectsBugsDashboard=()=> {
     */}
     </>
   );
-}
-
-
+};
 
 export default ProjectsBugsDashboard;
