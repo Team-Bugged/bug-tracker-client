@@ -97,57 +97,7 @@ const ProjectsBugsDashboard = () => {
       </Paper>
 
       <BugListMaterialUI bugsArray={bugsArray} />
-      {/* <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <div className="project-bar">
-                <div>Project Title</div>
-                <div>Project Status</div>
-                <div>Project StartDate</div>
-                <div>Project Owner</div>
-              </div>
-              {projectsArray.map((project) => (
-                <ProjectBar
-                  key={project._id}
-                  projectID={project._id}
-                  projectTitle={project.projectTitle}
-                  projectStatus={project.projectStatus}
-                  projectStartDate={project.projectStartDate}
-                  projectOwner={project.projectOwner}
-                />
-              ))}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Box> 
-      <br />
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <div className="project-bar">
-                <div>Bug Title</div>
-                <div>Bug Severity</div>
-                <div>Bug DueDate</div>
-                <div>Bug Created By</div>
-              </div>
-              {bugsArray.map((bug) => (
-                <BugBar
-                  key={bug._id}
-                  bugID={bug._id}
-                  bugTitle={bug.bugTitle}
-                  bugSeverity={bug.bugSeverity}
-                  bugDueDate={bug.bugDueDate}
-                  createdBy={bug.createdBy}
-                />
-              ))}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </>
-    */}
+    
     </>
   );
 };

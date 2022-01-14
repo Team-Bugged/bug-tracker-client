@@ -1,4 +1,8 @@
-import { getProjectData, updateProject } from "../components/ServerConnections";
+import {
+  getProjectData,
+  updateProject,
+  getBugsForAProject,
+} from "../components/ServerConnections";
 import Navbar from "./navbar/Navbar";
 import { useEffect, useState } from "react";
 import { useInfoContext } from "../components/Context";
@@ -23,9 +27,11 @@ import {
   Stack,
 } from "@mui/material";
 import { deleteProject } from "../components/ServerConnections";
+import BugListMaterialUI from "./BugListMaterialUI";
 
 const ProjectDetail = ({ projectID }) => {
   const [project, setProject] = useState();
+  const [bugsArray, setBugsArray] = useState([]);
   const [loading, setLoading] = useState(true);
   const { name } = useInfoContext();
   const navigate = useNavigate();
@@ -53,8 +59,12 @@ const ProjectDetail = ({ projectID }) => {
       .catch((err) => {
         console.log(err);
       });
+    getBugsForAProject(projectID)
+      .then((data) => {
+        setBugsArray(data);
+      })
+      .catch((err) => console.log(err));
   }, []);
-
   const handleDeleteProject = () => {
     console.log("kya");
     deleteProject(projectID, project.bugs);
@@ -189,7 +199,7 @@ const ProjectDetail = ({ projectID }) => {
               </div>
             </div>
           </Paper>
-          <BugList bugs={project.bugs} />
+          <BugListMaterialUI bugsArray={bugsArray} />
         </>
       )}
     </>

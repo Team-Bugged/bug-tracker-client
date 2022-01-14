@@ -19,13 +19,14 @@ export const AddBugForm = ({ projectID }) => {
   return (
     <>
       <Navbar />
-      <form>
+      <form className="addForm">
         <input
           placeholder="Bug Title"
           value={bugTitle}
           onChange={(input) => {
             setBugTitle(input.target.value);
           }}
+          required
         />
         <input
           placeholder="Bug Description"
@@ -33,25 +34,39 @@ export const AddBugForm = ({ projectID }) => {
           onChange={(input) => {
             setBugDescription(input.target.value);
           }}
+          required
         />
-        <select
-          value={bugSeverity}
-          onChange={(input) => {
-            setBugSeverity(input.target.value);
-          }}
-        >
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
+        
 
-        <input
-          type="date"
-          onChange={(event) => {
-            setBugDueDate(event.target.value);
-          }}
-        />
-        <button onClick={handleAddBugSubmit}>Submit</button>
+        <div className="bug-flex">
+          <div className="bugpriority">
+            <p>Bug Priority: </p>
+            <select required
+              value={bugSeverity}
+              onChange={(input) => {
+                setBugSeverity(input.target.value);
+              }}
+            >
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              
+            </select>
+          </div>
+          <div className="bugpriority">
+            <p>Due Date: </p>
+          <input className="duedate"
+            type="date"
+            onChange={(event) => {
+              setBugDueDate(event.target.value);
+            }}
+            required
+          />
+          </div>
+        </div>
+        
+        
+        <button className="save-btn" onClick={handleAddBugSubmit}>Save</button>
       </form>
     </>
   );
