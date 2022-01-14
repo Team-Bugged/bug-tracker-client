@@ -28,9 +28,9 @@ const Navbar = () => {
               <Typography variant="h6" color="inherit" component="div">
                 {name}
               </Typography>
-              <Button variant="h6" color="inherit" onClick={handleLogOut}>
-                Logout
-              </Button>
+              <button className="signout-btn" onClick={handleLogOut}>
+                Sign Out
+              </button>
             </Toolbar>
           </AppBar>
         </Box>

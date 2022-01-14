@@ -54,7 +54,7 @@ const ProjectsBugsDashboard = () => {
         </div>
       </Paper>
       <Paper className="detailpaper" variant="outlined">
-        <button class="addproject" onClick={handleAddProject}>
+        <button className="addproject" onClick={handleAddProject}>
           <AddIcon fontSize="small" />
           Add Project
         </button>
@@ -97,7 +97,6 @@ const ProjectsBugsDashboard = () => {
       </Paper>
 
       <BugListMaterialUI bugsArray={bugsArray} />
-    
     </>
   );
 };

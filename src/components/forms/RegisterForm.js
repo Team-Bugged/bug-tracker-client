@@ -130,8 +130,12 @@ const RegisterForm = () => {
                   name="confirmpassword"
                   required
                 />
-                <button disabled={disabledFlag} onClick={handleRegisterSubmit}>
-                  Submit
+                <button
+                  className="signup-btn"
+                  disabled={disabledFlag}
+                  onClick={handleRegisterSubmit}
+                >
+                  Sign Up
                 </button>
               </div>
             </form>

@@ -14,7 +14,13 @@ const BugListMaterialUI = ({ bugsArray }) => {
     console.log("bugsArray", bugsArray);
   }, []);
   const navigate = useNavigate();
-  const bugTableHeaders = ["Title", "Severity", "Created By", "Due Date"];
+  const bugTableHeaders = [
+    "Title",
+    "Severity",
+    "Created By",
+    "Status",
+    "Due Date",
+  ];
   const handleBugClick = (bugID) => {
     navigate(`/bug/${bugID}`);
   };
@@ -37,6 +43,7 @@ const BugListMaterialUI = ({ bugsArray }) => {
               <TableCell align="center">{bug.bugTitle}</TableCell>
               <TableCell align="center">{bug.bugSeverity}</TableCell>
               <TableCell align="center">{bug.createdBy}</TableCell>
+              <TableCell align="center">{bug.bugStatus}</TableCell>
               <TableCell align="center">{bug.bugDueDate}</TableCell>
             </TableRow>
           ))}
