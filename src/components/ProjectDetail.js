@@ -1,5 +1,6 @@
 import { getBugData, getProjectData } from "../components/ServerConnections";
 import { BugBar } from "../components/BugBar";
+import Navbar from "./navbar/Navbar";
 import { useEffect, useState } from "react";
 import { useInfoContext } from "../components/Context";
 import { useNavigate } from "react-router-dom";
@@ -54,6 +55,7 @@ const ProjectDetail = ({ projectID }) => {
         "Loading "
       ) : (
         <>
+          <Navbar />
           <Paper className="projectdescp">
             <div>
               <h1>{project?.projectTitle}</h1>
