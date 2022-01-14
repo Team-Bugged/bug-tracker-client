@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const BugListMaterialUI = ({ bugsArray }) => {
   useEffect(() => {
-    console.log(bugsArray);
+    console.log("bugsArray", bugsArray);
   }, []);
   const navigate = useNavigate();
   const bugTableHeaders = ["Title", "Severity", "Created By", "Due Date"];

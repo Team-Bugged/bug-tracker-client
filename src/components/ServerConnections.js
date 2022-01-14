@@ -44,7 +44,6 @@ export const getUserData = async () => {
 };
 
 export const getProjectData = async (projectID) => {
-  console.log(projectID);
   let response;
   try {
     response = await axios.get("http://localhost:5000/getprojectinfo", {
@@ -100,6 +99,20 @@ export const getBugs = async () => {
     return response.data;
   } catch (err) {
     return err;
+  }
+};
+
+export const getBugsForAProject = async (projectID) => {
+  let response;
+  try {
+    response = await axios.get("http://localhost:5000/getbugsforaproject", {
+      params: {
+        projectID: projectID,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
   }
 };
 
