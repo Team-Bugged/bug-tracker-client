@@ -6,12 +6,47 @@
   
 }
 
+.detaildiv{
+  padding-left: 30px;
+  display:flex;
+  flex-direction: column;  
+}
+
+/* display: 'flex',
+      minWidth: '100%',
+      justifyContent: 'space-between',
+      marginBottom: '1.5em', */
+.detailpaper{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+  margin-bottom: 1.5em;
+  padding: 1.5em;
+  /* min-height: calc(100vH - 244px); */
+}
+
 .jss17 {
   
   display: flex;
   padding: 0.8em 1.5em;
   align-items: center;
   margin-bottom: 1em;
+}
+
+.addproject{
+  display: flex;
+  width: 120px;
+  align-items: center;  
+  margin:2em 0;
+  background-color: #19add2;
+}
+
+.mainrow{
+  background-color: #19add2;
+}
+
+.mainbugrow{
+  background-color: #d23e19bd;
 }
 
 .project-bar {

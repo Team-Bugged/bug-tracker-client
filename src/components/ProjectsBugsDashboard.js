@@ -16,13 +16,16 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import AddIcon from '@mui/icons-material/Add';
+import BugReportIcon from '@mui/icons-material/BugReport';
 import Button from "@mui/material/Button";
 
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { handleBreakpoints } from "@mui/system";
 
 const ProjectsBugsDashboard=()=> {
-  const tableHeaders = ['Name', 'Status', 'Created on', 'Owner', 'Bugs'];
+  const projectTableHeaders = ['Name', 'Status', 'Created on', 'Owner', 'Bugs'];
+  const bugTableHeaders = ['Title', 'Severity', 'Created By', 'Due Date'];
   const [projectsArray, setProjectsArray] = useState([]);
   const [bugsArray, setBugsArray] = useState([]);
 
@@ -31,6 +34,9 @@ const ProjectsBugsDashboard=()=> {
   const navigate = useNavigate();
   const handleProjectClick = (projectID) => {
     navigate(`/project/${projectID}`);
+  };
+  const handleBugClick = (bugID) => {
+    navigate(`/project/${bugID}`);
   };
   const handleAddProject = () => {
     navigate("/addproject");
@@ -51,21 +57,23 @@ const ProjectsBugsDashboard=()=> {
     <Paper className="jss17" variant="outlined">
         <AssignmentIcon fontSize="large" color="primary" />
 
-        <div>
-          <Typography variant="h6" color="secondary">
+        <div className="detaildiv">
+          <Typography variant="h6" >
             All Projects
           </Typography>
-          <Typography variant="subtitle1" color="secondary">
+          <Typography variant="subtitle1">
             List of all the created or joined projects.
           </Typography>
         </div>
-        <button onClick={handleAddProject}>Add Project</button>
+        
       </Paper>
-      <Paper >
+      <Paper className="detailpaper" variant="outlined">
+      <button class="addproject" onClick={handleAddProject}>
+      <AddIcon fontSize="small"/>Add Project</button>
       <Table>
         <TableHead>
-          <TableRow>
-            {tableHeaders.map((t) => (
+          <TableRow className="mainrow">
+            {projectTableHeaders.map((t) => (
               <TableCell key={t} align="center">
                 {t}
               </TableCell>
@@ -84,6 +92,47 @@ const ProjectsBugsDashboard=()=> {
                   <TableCell align="center">{project.bugs.length}</TableCell>
                   </TableRow>
          ))}          
+        </TableBody>
+      </Table>
+    </Paper>
+
+    <Paper className="jss17" variant="outlined">
+        <BugReportIcon fontSize="large" color="error" />
+
+        <div className="detaildiv">
+          <Typography variant="h6" >
+            Bugs
+          </Typography>
+          <Typography variant="subtitle1">
+            List of all bugs created by or assigned to user.
+          </Typography>
+        </div>
+        
+      </Paper>
+      <Paper className="detailpaper" variant="outlined">
+
+      <Table>
+        <TableHead>
+          <TableRow className="mainbugrow">
+            {bugTableHeaders.map((t) => (
+              <TableCell key={t} align="center">
+                {t}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {bugsArray.map((bug) => (
+              <TableRow key={bug._id} onClick={()=>handleBugClick(bug._id)}>
+                  
+              <TableCell  align="center">{bug.bugTitle}</TableCell>
+              <TableCell align="center">{bug.bugSeverity}</TableCell>
+              <TableCell align="center">{bug.createdBy}</TableCell>
+              <TableCell align="center">{bug.bugDueDate}</TableCell>
+              </TableRow>
+     ))}    
+                               
+                  
         </TableBody>
       </Table>
     </Paper>
@@ -115,7 +164,7 @@ const ProjectsBugsDashboard=()=> {
             </Typography>
           </Toolbar>
         </AppBar>
-      </Box> */}
+      </Box> 
       <br />
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
@@ -142,59 +191,11 @@ const ProjectsBugsDashboard=()=> {
         </AppBar>
       </Box>
     </>
+    */}
+    </>
   );
 }
 
-// const ProjectsBugsDashboard = () => {
-//   const [projectsArray, setProjectsArray] = useState([]);
-//   const [bugsArray, setBugsArray] = useState([]);
 
-//   useEffect(() => {
-//     getProjects().then((data) => {
-//       setProjectsArray(data);
-//     });
-
-//     getBugs().then((data) => {
-//       setBugsArray(data);
-//     });
-//   }, []);
-
-//   return (
-//     <>
-//       <div className="project-bar">
-//         <div>Project Title</div>
-//         <div>Project Status</div>
-//         <div>Project StartDate</div>
-//         <div>Project Owner</div>
-//       </div>
-//       {projectsArray.map((project) => (
-//         <ProjectBar
-//           key={project._id}
-//           projectTitle={project.projectTitle}
-//           projectStatus={project.projectStatus}
-//           projectStartDate={project.projectStartDate}
-//           projectOwner={project.projectOwner}
-//         />
-//       ))}
-//       <br />
-// <div className="project-bar">
-//   <div>Bug Title</div>
-//   <div>Bug Severity</div>
-//   <div>Bug DueDate</div>
-//   <div>Bug Created By</div>
-// </div>
-// {bugsArray.map((bug) => (
-//   <BugBar
-//     key={bug._id}
-//     bugID={bug._id}
-//     bugTitle={bug.bugTitle}
-//     bugSeverity={bug.bugSeverity}
-//     bugDueDate={bug.bugDueDate}
-//     createdBy={bug.createdBy}
-//   />
-// ))}
-//     </>
-//   );
-// };
 
 export default ProjectsBugsDashboard;
