@@ -17,10 +17,21 @@
       justifyContent: 'space-between',
       marginBottom: '1.5em', */
 .detailpaper{
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between; */
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
   margin-bottom: 1.5em;
+  padding: 1.5em;
+  /* min-height: calc(100vH - 244px); */
+}
+.projectpaper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1.5em 0;
   padding: 1.5em;
   /* min-height: calc(100vH - 244px); */
 }
@@ -111,4 +122,27 @@
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+}
+
+.statusdiv
+{
+    color: rgb(0, 128, 0);
+    background-color: rgb(226, 255, 226);
+    border-radius: 4px;
+    font-weight: 500;
+    padding: 0.2em 0.4em;
+    max-width: 5em;
+    display: inline;
+}
+
+.projectdescp{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 2em;
+}
+
+.membersacc{
+  max-width: 30em;
 }
