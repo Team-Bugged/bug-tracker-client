@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Welcome from "./pages/Welcome";
 import Project from "./pages/Project";
 import AddProject from "./pages/AddProject";
+import AddBug from "./pages/AddBug";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route exact path="/dashboard" element={<Dashboard />} />
       <Route exact path="/project/:projectID" element={<Project />} />
       <Route exact path="/addproject" element={<AddProject />} />
+      <Route exact path="project/:projectID/addbug" element={<AddBug />} />
     </Routes>
   );
 };
