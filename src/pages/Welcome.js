@@ -3,12 +3,24 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
   return (
     <>
-      <h1>Welcome to Bug-Tracker</h1>
-      <Link to="/login">Login</Link>
-      <br />
-      <Link to="/Register">Register</Link>
-      <br />
-      <Link to="/Dashboard">DashBoard</Link>
+      <div className="login-page">
+        <div className="form">
+          <div className="login">
+            <div className="login-header">
+              <h1>Welcome to Bug-Tracker</h1>
+              <a href="/login">
+                <button className="signin-btn">Login</button>
+              </a>
+              <a href="/Register">
+                <button className="signup-btn">Register</button>
+              </a>
+              <a href="/login">
+                <button className="dashboard-btn">Dashboard</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

@@ -54,11 +54,32 @@
 }
 
 .addproject {
-  display: flex;
-  width: 120px;
-  align-items: center;
-  margin: 2em 0;
-  background-color: #19add2;
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
+    rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
+    rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
+    rgba(44, 187, 99, 0.15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 10px;
+}
+
+.addproject:hover {
+  box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
+    rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
+    rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
+    rgba(44, 187, 99, 0.25) 0 16px 32px;
 }
 
 .mainrow {
@@ -87,27 +108,26 @@
   display: inline-block;
 }
 
-select{
- 
+select {
   margin: 10px 20px;
   /* width: 73%; */
-  padding: 12px 20px; 
+  padding: 12px 20px;
   border: none;
   background-color: rgb(176, 225, 247);
- 
-  
 }
 
-
-
 .login-page {
-  width: 360px;
+  width: 400px;
   padding: 8% 0 0;
   margin: auto;
 }
 .login-page .form .login {
   margin-top: -31px;
   margin-bottom: 26px;
+}
+
+.login-header h1 {
+  margin-bottom: 30px;
 }
 .form {
   position: relative;
@@ -130,7 +150,7 @@ select{
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+/* .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -144,6 +164,153 @@ select{
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  margin: 10px;
+  text-decoration: none;
+} */
+
+.signin-btn {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #00d775, #00bd68);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: large;
+  height: 44px;
+  line-height: 44px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 9;
+  border: 0;
+  margin-bottom: 20px;
+}
+
+.signin-btn:hover {
+  background: #00bd68;
+}
+
+.signup-btn {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #ff7e31, #e62c03);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: large;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow 0.2s;
+  margin-bottom: 20px;
+}
+
+.signup-btn:hover {
+  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}
+
+.dashboard-btn {
+  background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 10px;
+}
+
+.dashoboard-btn:hover {
+  background-image: linear-gradient(-180deg, #0e242e 0%, #01151d 100%);
+}
+
+.signout-btn {
+  align-items: center;
+  background-color: #ffe7e7;
+  background-position: 0 0;
+  border: 1px solid #fee0e0;
+  border-radius: 11px;
+  box-sizing: border-box;
+  color: #d33a2c;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 33.4929px;
+  list-style: outside url(https://www.smashingmagazine.com/images/bullet.svg)
+    none;
+  padding: 2px 12px;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-underline-offset: 1px;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  word-break: break-word;
+  margin-left: 10px;
+}
+
+.signout-btn:active,
+.signout-btn:hover,
+.signout-btn:focus {
+  outline: 0;
+}
+
+.signout-btn:active {
+  background-color: #d33a2c;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #ffffff;
+}
+
+.signout-btn:hover {
+  background-color: #ffe3e3;
+  border-color: #faa4a4;
+}
+
+.signout-btn:active:hover,
+.signout-btn:focus:hover,
+.signoout-btn:focus {
+  background-color: #d33a2c;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #ffffff;
 }
 
 .statusdiv {
@@ -168,7 +335,7 @@ select{
   max-width: 30em;
 }
 
-.addForm{
+.addForm {
   margin: 5% 20%;
   padding: 8%;
   display: flex;
@@ -184,18 +351,17 @@ select{
   padding: 10px 20px;
   width: 23%;
   background-color: rgb(55, 170, 219);
-  
 }
 
-input{
+input {
   width: 73%;
   padding: 12px 20px;
   margin: 5px 0;
   box-sizing: border-box;
   background-color: rgb(176, 225, 247);
- 
+
   border: none;
-    border-bottom: 2px solid rgb(55, 170, 219);
+  border-bottom: 2px solid rgb(55, 170, 219);
 }
 input:focus {
   width: 100%;
@@ -213,18 +379,18 @@ input:focus {
   margin-bottom: 10px;
 }
 
-.bug-flex{
+.bug-flex {
   display: flex;
   margin: 2em 0;
 }
-.bugpriority{
+.bugpriority {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.duedate{
-  width:100%;
-  border:none;
+.duedate {
+  width: 100%;
+  border: none;
 }

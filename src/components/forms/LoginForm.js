@@ -79,8 +79,12 @@ const LoginForm = () => {
                   required
                 />
                 <br />
-                <button disabled={disabledFlag} onClick={handleLoginSubmit}>
-                  Submit
+                <button
+                  className="signin-btn"
+                  disabled={disabledFlag}
+                  onClick={handleLoginSubmit}
+                >
+                  Sign In
                 </button>
               </div>
             </form>
