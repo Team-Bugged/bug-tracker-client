@@ -8,6 +8,7 @@ export const InfoProvider = ({ children }) => {
   const [name, setName] = useState("");
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const loginCheck = () => {
     if (localStorage.getItem("token")) {
       getUserData().then((data) => {

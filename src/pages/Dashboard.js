@@ -9,7 +9,9 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    loginCheck();
+    if (!loginCheck()) {
+      navigate("/login");
+    }
   }, []);
   return (
     <>
