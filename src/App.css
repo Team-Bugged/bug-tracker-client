@@ -107,6 +107,7 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  
 }
 .form button {
   font-family: "Roboto", sans-serif;
@@ -145,4 +146,9 @@
 
 .membersacc{
   max-width: 30em;
+}
+
+input{
+  border: none;
+    border-bottom: 2px solid red;
 }

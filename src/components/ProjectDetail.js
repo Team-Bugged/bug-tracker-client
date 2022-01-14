@@ -120,12 +120,14 @@ const ProjectDetail = ({ projectID }) => {
           </div>
         </div>
           
-          <BugList bugs={project.bugs} />
+          
           
         </Paper>   
         
+        
       
       )}
+      <BugList bugs={project.bugs} />
       
     </>
   );
