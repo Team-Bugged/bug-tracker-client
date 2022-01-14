@@ -14,28 +14,22 @@ export const AddProjectForm = () => {
     addProject(projectTitle, projectDescription).then(navigate("/dashboard"));
   };
   return (
-    <>
-      <Navbar />
-      <form className="projectForm">
-        <input
-          placeholder="Project Title"
-          value={projectTitle}
-          onChange={(input) => {
-            setProjectTitle(input.target.value);
-          }}
-        />
-        <input
-          className="descp"
-          placeholder="Project Description"
-          value={projectDescription}
-          onChange={(input) => {
-            setProjectDescription(input.target.value);
-          }}
-        />
-        <button className="save-btn" onClick={handleAddProjectSubmit}>
-          Save
-        </button>
-      </form>
-    </>
+    <form className="addForm">
+      <input
+        placeholder="Project Title"
+        value={projectTitle}
+        onChange={(input) => {
+          setProjectTitle(input.target.value);
+        }}
+      />
+      <input
+        placeholder="Project Description"
+        value={projectDescription}
+        onChange={(input) => {
+          setProjectDescription(input.target.value);
+        }}
+      />
+      <button className="save-btn" onClick={handleAddProjectSubmit}>Save</button>
+    </form>
   );
 };
