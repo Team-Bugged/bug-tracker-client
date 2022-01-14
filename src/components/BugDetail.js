@@ -1,18 +1,20 @@
-import {
-  getBugData,
-  getProjectData,
-  getProjectIdForABug,
-} from "../components/ServerConnections";
 import { useEffect, useState } from "react";
 import { useInfoContext } from "../components/Context";
 import { useNavigate } from "react-router-dom";
-import { deleteBug } from "../components/ServerConnections";
+import {
+  deleteBug,
+  getBugData,
+  assignBug,
+  closeBug,
+} from "../components/ServerConnections";
 
 const BugDetail = ({ bugID }) => {
   const [bug, setBug] = useState();
   const [loading, setLoading] = useState(true);
   const { name } = useInfoContext();
   const navigate = useNavigate();
+  const [assignInput, setAssignInput] = useState(false);
+  const [assignUserName, setAssignUserName] = useState("");
 
   useEffect(() => {
     getBugData(bugID)
@@ -32,11 +34,14 @@ const BugDetail = ({ bugID }) => {
   };
 
   const handleAssignBug = () => {
-    //todo
+    if (assignInput && assignUserName !== "") {
+      assignBug(bugID, assignUserName).then(navigate("/dashboard"));
+    }
+    setAssignInput(!assignInput);
   };
 
   const handleCloseBug = () => {
-    //todo
+    closeBug(bugID).then(navigate("/dashboard"));
   };
   return (
     <>
@@ -63,13 +68,35 @@ const BugDetail = ({ bugID }) => {
             <p>{bug.assignedTo}</p>
           </div>
           <div>
-            <button onClick={handleAssignBug}>Assing Bug</button>
+            {bug.bugStatus !== "Closed" ? (
+              <>
+                <button onClick={handleAssignBug}>Assing Bug</button>
+                {assignInput ? (
+                  <input
+                    placeholder="Enter UserName"
+                    value={assignUserName}
+                    onChange={(event) => {
+                      setAssignUserName(event.target.value);
+                    }}
+                  />
+                ) : (
+                  <></>
+                )}
+
+                {bug?.assignedTo === name || bug.createdBy === name ? (
+                  <button onClick={handleCloseBug}>Close Bug</button>
+                ) : (
+                  <></>
+                )}
+              </>
+            ) : (
+              <></>
+            )}
             {bug?.createdBy === name ? (
               <button onClick={handleDeleteBug}>Delete</button>
             ) : (
               <></>
             )}
-            <button onClick={handleCloseBug}>Close Bug</button>
           </div>
         </>
       )}

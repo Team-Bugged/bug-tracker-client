@@ -15,10 +15,10 @@ import BugReportIcon from "@mui/icons-material/BugReport";
 import Button from "@mui/material/Button";
 
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import BugListMaterialUI from "./BugListMaterialUI";
 
 const ProjectsBugsDashboard = () => {
   const projectTableHeaders = ["Name", "Status", "Created on", "Owner", "Bugs"];
-  const bugTableHeaders = ["Title", "Severity", "Created By", "Due Date"];
   const [projectsArray, setProjectsArray] = useState([]);
   const [bugsArray, setBugsArray] = useState([]);
 
@@ -26,9 +26,7 @@ const ProjectsBugsDashboard = () => {
   const handleProjectClick = (projectID) => {
     navigate(`/project/${projectID}`);
   };
-  const handleBugClick = (bugID) => {
-    navigate(`/bug/${bugID}`);
-  };
+
   const handleAddProject = () => {
     navigate("/addproject");
   };
