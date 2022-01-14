@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { getProjects, getBugs } from "./ServerConnections";
-import { ProjectBar } from "./ProjectBar";
-import { BugBar } from "./BugBar";
 import { useNavigate } from "react-router-dom";
 import {
   Table,
@@ -9,19 +7,14 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Link,
   Paper,
 } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import BugReportIcon from "@mui/icons-material/BugReport";
 import Button from "@mui/material/Button";
 
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import { handleBreakpoints } from "@mui/system";
 
 const ProjectsBugsDashboard = () => {
   const projectTableHeaders = ["Name", "Status", "Created on", "Owner", "Bugs"];
