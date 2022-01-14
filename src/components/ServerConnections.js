@@ -304,3 +304,55 @@ export const updateProject = async (
     return err;
   }
 };
+
+export const updateBug = async (
+  bugTitle,
+  bugDescription,
+  bugSeverity,
+  bugDueDate,
+  bugID
+) => {
+  let response;
+  try {
+    response = await axios.post(
+      "http://localhost:5000/editbug",
+      {
+        bugID: bugID,
+        bugTitle: bugTitle,
+        bugDescription: bugDescription,
+        bugDueDate: bugDueDate,
+        bugSeverity: bugSeverity,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const closeProject = async (projectID) => {
+  let response;
+  try {
+    response = await axios.post(
+      "http://localhost:5000/closeProject",
+      {
+        projectID: projectID,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};

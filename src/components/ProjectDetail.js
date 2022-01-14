@@ -13,7 +13,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { ariaHidden, Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 
 import {
@@ -26,7 +26,7 @@ import {
   Button,
   Stack,
 } from "@mui/material";
-import { deleteProject } from "../components/ServerConnections";
+import { deleteProject, closeProject } from "../components/ServerConnections";
 import BugListMaterialUI from "./BugListMaterialUI";
 
 const ProjectDetail = ({ projectID }) => {
@@ -91,6 +91,12 @@ const ProjectDetail = ({ projectID }) => {
       navigate("/dashboard");
     });
   };
+
+  const handleCloseProject = () => {
+    closeProject(projectID).then(() => {
+      window.location.reload();
+    });
+  };
   return (
     <>
       {loading ? (
@@ -136,13 +142,22 @@ const ProjectDetail = ({ projectID }) => {
               </Button>
 
               {project?.projectOwner === name ? (
-                <Button
-                  onClick={handleDeleteProject}
-                  variant="contained"
-                  color="error"
-                >
-                  Delete
-                </Button>
+                <>
+                  <Button
+                    onClick={handleCloseProject}
+                    variant="contained"
+                    color="error"
+                  >
+                    Close Project
+                  </Button>
+                  <Button
+                    onClick={handleDeleteProject}
+                    variant="contained"
+                    color="error"
+                  >
+                    Delete
+                  </Button>
+                </>
               ) : (
                 <></>
               )}

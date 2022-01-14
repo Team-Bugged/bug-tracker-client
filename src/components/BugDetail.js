@@ -6,7 +6,10 @@ import {
   getBugData,
   assignBug,
   closeBug,
+  updateBug,
 } from "../components/ServerConnections";
+import { Modal } from "@mui/material";
+import Box from "@mui/material/Box";
 
 const BugDetail = ({ bugID }) => {
   const [bug, setBug] = useState();
@@ -15,7 +18,38 @@ const BugDetail = ({ bugID }) => {
   const navigate = useNavigate();
   const [assignInput, setAssignInput] = useState(false);
   const [assignUserName, setAssignUserName] = useState("");
+  const [bugTitle, setBugTitle] = useState("");
+  const [bugDescription, setBugDescription] = useState("");
+  const [bugSeverity, setBugSeverity] = useState("low");
+  const [bugDueDate, setBugDueDate] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+  const handleEditBugDetails = () => {
+    setBugTitle(bug.bugTitle);
+    setBugDescription(bug.bugDescription);
+    setBugDueDate(bug.bugDueDate);
+    setBugSeverity(bug.bugSeverity);
+    setOpenModal(true);
+  };
 
+  const handleModalClose = () => {
+    setOpenModal(false);
+  };
+
+  const handleEditBugSubmit = () => {
+    updateBug(bugTitle, bugDescription, bugSeverity, bugDueDate, bugID);
+    window.location.reload();
+  };
   useEffect(() => {
     getBugData(bugID)
       .then((data) => {
@@ -26,6 +60,10 @@ const BugDetail = ({ bugID }) => {
         console.log(err);
       });
   }, []);
+
+  // useEffect(() => {
+  //   console.log("update");
+  // }, [bugTitle, bugDescription, bugSeverity, bugDueDate]);
 
   const handleDeleteBug = () => {
     deleteBug(bugID).then(() => {
@@ -49,6 +87,45 @@ const BugDetail = ({ bugID }) => {
         "Loading "
       ) : (
         <>
+          <Modal open={openModal} onClose={handleModalClose}>
+            <Box sx={style}>
+              <input
+                value={bugTitle}
+                onChange={(input) => {
+                  setBugTitle(input.target.value);
+                }}
+                required
+              />
+              <input
+                value={bugDescription}
+                onChange={(input) => {
+                  setBugDescription(input.target.value);
+                }}
+                required
+              />
+              <select
+                required
+                value={bugSeverity}
+                onChange={(input) => {
+                  setBugSeverity(input.target.value);
+                }}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <input
+                className="duedate"
+                type="date"
+                value={bugDueDate}
+                onChange={(event) => {
+                  setBugDueDate(event.target.value);
+                }}
+                required
+              />
+              <button onClick={handleEditBugSubmit}>Update</button>
+            </Box>
+          </Modal>
           <div>
             <h1>{bug?.bugTitle}</h1>
           </div>
@@ -66,6 +143,9 @@ const BugDetail = ({ bugID }) => {
           </div>
           <div>
             <p>{bug.assignedTo}</p>
+          </div>
+          <div>
+            <p>{bug.bugDueDate}</p>
           </div>
           <div>
             {bug.bugStatus !== "Closed" ? (
@@ -93,7 +173,10 @@ const BugDetail = ({ bugID }) => {
               <></>
             )}
             {bug?.createdBy === name ? (
-              <button onClick={handleDeleteBug}>Delete</button>
+              <>
+                <button onClick={handleDeleteBug}>Delete</button>
+                <button onClick={handleEditBugDetails}>Update Bug</button>
+              </>
             ) : (
               <></>
             )}
