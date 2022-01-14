@@ -3,22 +3,35 @@ import { getProjects, getBugs } from "./ServerConnections";
 import { ProjectBar } from "./ProjectBar";
 import { BugBar } from "./BugBar";
 import { useNavigate } from "react-router-dom";
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Link,
+  Paper,
+} from '@mui/material';
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { handleBreakpoints } from "@mui/system";
 
-export default function ProjectsBugsDashboard() {
+const ProjectsBugsDashboard=()=> {
+  const tableHeaders = ['Name', 'Status', 'Created on', 'Owner', 'Bugs'];
   const [projectsArray, setProjectsArray] = useState([]);
   const [bugsArray, setBugsArray] = useState([]);
 
+ 
+
   const navigate = useNavigate();
+  const handleProjectClick = (projectID) => {
+    navigate(`/project/${projectID}`);
+  };
   const handleAddProject = () => {
     navigate("/addproject");
   };
@@ -35,7 +48,7 @@ export default function ProjectsBugsDashboard() {
 
   return (
     <>
-      <Paper className="jss17" variant="outlined">
+    <Paper className="jss17" variant="outlined">
         <AssignmentIcon fontSize="large" color="primary" />
 
         <div>
@@ -48,7 +61,38 @@ export default function ProjectsBugsDashboard() {
         </div>
         <button onClick={handleAddProject}>Add Project</button>
       </Paper>
-      <Box sx={{ flexGrow: 1 }}>
+      <Paper >
+      <Table>
+        <TableHead>
+          <TableRow>
+            {tableHeaders.map((t) => (
+              <TableCell key={t} align="center">
+                {t}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {projectsArray.map((project) => (
+                               
+                  <TableRow key={project._id} onClick={()=>handleProjectClick(project._id)}>
+                  
+                  <TableCell  align="center">{project.projectTitle}</TableCell>
+                  <TableCell align="center">{project.projectStatus}</TableCell>
+                  <TableCell align="center">{project.projectStartDate}</TableCell>
+                  <TableCell align="center">{project.projectOwner}</TableCell>
+                  <TableCell align="center">{project.bugs.length}</TableCell>
+                  </TableRow>
+         ))}          
+        </TableBody>
+      </Table>
+    </Paper>
+
+
+
+
+      
+      {/* <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -71,7 +115,7 @@ export default function ProjectsBugsDashboard() {
             </Typography>
           </Toolbar>
         </AppBar>
-      </Box>
+      </Box> */}
       <br />
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
@@ -153,4 +197,4 @@ export default function ProjectsBugsDashboard() {
 //   );
 // };
 
-// export default ProjectsBugsDashboard;
+export default ProjectsBugsDashboard;
