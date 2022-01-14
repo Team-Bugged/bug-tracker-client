@@ -1,5 +1,4 @@
-import { getBugData, getProjectData } from "../components/ServerConnections";
-import { BugBar } from "../components/BugBar";
+import { getProjectData, updateProject } from "../components/ServerConnections";
 import Navbar from "./navbar/Navbar";
 import { useEffect, useState } from "react";
 import { useInfoContext } from "../components/Context";
@@ -10,6 +9,9 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { ariaHidden, Modal } from "@mui/material";
+import Box from "@mui/material/Box";
+
 import {
   Table,
   TableHead,
@@ -27,6 +29,20 @@ const ProjectDetail = ({ projectID }) => {
   const [loading, setLoading] = useState(true);
   const { name } = useInfoContext();
   const navigate = useNavigate();
+  const [openModal, setOpenModal] = useState(false);
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+  const [projectTitle, setProjectTitle] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
 
   useEffect(() => {
     getProjectData(projectID)
@@ -49,12 +65,49 @@ const ProjectDetail = ({ projectID }) => {
     console.log("no");
     navigate(`/project/${projectID}/addbug`);
   };
+
+  const handleEditProjectDetails = () => {
+    setProjectTitle(project.projectTitle);
+    setProjectDescription(project.projectDescription);
+    setOpenModal(true);
+  };
+
+  const handleModalClose = () => {
+    setOpenModal(false);
+  };
+
+  const handleEditProjectSubmit = () => {
+    updateProject(projectID, projectTitle, projectDescription).then(() => {
+      navigate("/dashboard");
+    });
+  };
   return (
     <>
       {loading ? (
         "Loading "
       ) : (
         <>
+          <Modal open={openModal} onClose={handleModalClose}>
+            <Box sx={style}>
+              <label>Project Title</label>
+              <input
+                value={projectTitle}
+                onChange={(e) => {
+                  setProjectTitle(e.target.value);
+                }}
+              />
+              <br />
+              <label>project description</label>
+              <input
+                value={projectDescription}
+                onChange={(e) => {
+                  setProjectDescription(e.target.value);
+                }}
+              />
+              <br />
+              <button onClick={handleEditProjectSubmit}>Update</button>
+            </Box>
+          </Modal>
           <Navbar />
           <Paper className="projectdescp">
             <div>
@@ -65,6 +118,9 @@ const ProjectDetail = ({ projectID }) => {
             </div>
 
             <Stack spacing={2} direction="row">
+              <Button onClick={handleEditProjectDetails} variant="contained">
+                Edit Project Detail
+              </Button>
               <Button onClick={handleAddBug} variant="contained">
                 Add Bug
               </Button>
@@ -97,15 +153,19 @@ const ProjectDetail = ({ projectID }) => {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>Username</TableCell>
+                          <TableCell>{project.projectOwner}</TableCell>
                           <TableCell>Joined On</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        <TableRow>
-                          <TableCell>Username</TableCell>
-                          <TableCell>Joined On</TableCell>
-                        </TableRow>
+                        {project.projectDevelopers.map((username) => {
+                          return (
+                            <TableRow>
+                              <TableCell>{username}</TableCell>
+                              <TableCell>Joined On</TableCell>
+                            </TableRow>
+                          );
+                        })}
                       </TableBody>
                     </Table>
                   </Typography>

@@ -264,3 +264,30 @@ export const closeBug = async (bugID) => {
     return err;
   }
 };
+
+export const updateProject = async (
+  projectID,
+  projectTitle,
+  projectDescription
+) => {
+  let response;
+  try {
+    response = await axios.post(
+      "http://localhost:5000/editproject",
+      {
+        projectID: projectID,
+        projectTitle: projectTitle,
+        projectDescription: projectDescription,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
