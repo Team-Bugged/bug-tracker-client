@@ -88,15 +88,17 @@
 }
 
 select{
-  
-  margin:10%;
-  width: 73%;
+ 
+  margin: 10px 20px;
+  /* width: 73%; */
   padding: 12px 20px; 
   border: none;
   background-color: rgb(176, 225, 247);
  
   
 }
+
+
 
 .login-page {
   width: 360px;
@@ -209,4 +211,20 @@ input:focus {
 
 .navbar {
   margin-bottom: 10px;
+}
+
+.bug-flex{
+  display: flex;
+  margin: 2em 0;
+}
+.bugpriority{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.duedate{
+  width:100%;
+  border:none;
 }
