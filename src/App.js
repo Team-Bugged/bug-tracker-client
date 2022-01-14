@@ -6,6 +6,7 @@ import Welcome from "./pages/Welcome";
 import Project from "./pages/Project";
 import AddProject from "./pages/AddProject";
 import AddBug from "./pages/AddBug";
+import Bug from "./pages/Bug";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route exact path="/project/:projectID" element={<Project />} />
       <Route exact path="/addproject" element={<AddProject />} />
       <Route exact path="project/:projectID/addbug" element={<AddBug />} />
+      <Route exact path="project/:projectID/bug/:bugID" element={<Bug />} />
     </Routes>
   );
 };

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 export const BugBar = ({
+  projectID,
   bugID,
   bugTitle,
   bugSeverity,
@@ -9,7 +10,7 @@ export const BugBar = ({
 }) => {
   const navigate = useNavigate();
   const handleBugClick = () => {
-    navigate(`/project/${bugID}`);
+    navigate(`/project/${projectID}/${bugID}`);
   };
   return (
     <>

@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { useInfoContext } from "../components/Context";
 import { useNavigate } from "react-router-dom";
 import BugList from "./BugList";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Table,
   TableHead,
@@ -17,8 +17,8 @@ import {
   TableCell,
   Paper,
   Button,
-  Stack
-} from '@mui/material';
+  Stack,
+} from "@mui/material";
 import { deleteProject } from "../components/ServerConnections";
 
 const ProjectDetail = ({ projectID }) => {
@@ -50,85 +50,86 @@ const ProjectDetail = ({ projectID }) => {
   };
   return (
     <>
-    <Paper className="projectdescp">
-          <div>
-            <h1>{project?.projectTitle}</h1>
-            <p className="statusdiv"><i>{project?.projectDescription}</i></p>
-        
-          </div>
-          
-          <Stack spacing={2} direction="row">
-            <Button onClick={handleAddBug} variant="contained">Add Bug</Button>
-            
-            {project?.projectOwner === name ? (
-              <Button onClick={handleDeleteProject} variant="contained" color="error">Delete</Button>
-            ) : (
-              <></>
-            )}
-         
-          </Stack>
-
-          </Paper>
       {loading ? (
         "Loading "
       ) : (
-        <Paper className="projectpaper" variant="outlined">
-        
-        <div>
-        <Accordion className="membersacc">
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Contributors</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Username</TableCell>
-                  <TableCell>Joined On</TableCell>
-                </TableRow>
+        <>
+          <Paper className="projectdescp">
+            <div>
+              <h1>{project?.projectTitle}</h1>
+              <p className="statusdiv">
+                <i>{project?.projectDescription}</i>
+              </p>
+            </div>
 
-              </TableHead>
-            <TableBody>
-            <TableRow>
-              <TableCell>Username</TableCell>
-              <TableCell>Joined On</TableCell>
-            </TableRow>
+            <Stack spacing={2} direction="row">
+              <Button onClick={handleAddBug} variant="contained">
+                Add Bug
+              </Button>
 
-            </TableBody>
-            
-            </Table>
-            
-          </Typography>
-        </AccordionDetails>
-      </Accordion>      
-        </div>
-          
-        <div>
-          <div>
-            <p><strong>Project Owner: {project?.projectOwner}</strong></p>
-          </div>
-          <div >
-            Status: <p className="statusdiv">{project?.projectStatus}</p>
-          </div>
-          <div>
-            <p><strong>Created On: {project?.projectStartDate}</strong></p>
-          </div>
-        </div>
-          
-          
-          
-        </Paper>   
-        
-        
-      
+              {project?.projectOwner === name ? (
+                <Button
+                  onClick={handleDeleteProject}
+                  variant="contained"
+                  color="error"
+                >
+                  Delete
+                </Button>
+              ) : (
+                <></>
+              )}
+            </Stack>
+          </Paper>
+          <Paper className="projectpaper" variant="outlined">
+            <div>
+              <Accordion className="membersacc">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>Contributors</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <Table>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Username</TableCell>
+                          <TableCell>Joined On</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell>Username</TableCell>
+                          <TableCell>Joined On</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </div>
+
+            <div>
+              <div>
+                <p>
+                  <strong>Project Owner: {project?.projectOwner}</strong>
+                </p>
+              </div>
+              <div>
+                Status: <p className="statusdiv">{project?.projectStatus}</p>
+              </div>
+              <div>
+                <p>
+                  <strong>Created On: {project?.projectStartDate}</strong>
+                </p>
+              </div>
+            </div>
+          </Paper>
+          <BugList bugs={project.bugs} />
+        </>
       )}
-      <BugList bugs={project.bugs} />
-      
     </>
   );
 };
