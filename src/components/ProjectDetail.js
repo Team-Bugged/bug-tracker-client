@@ -19,14 +19,13 @@ import {
   Button,
   Stack
 } from '@mui/material';
+import { deleteProject } from "../components/ServerConnections";
 
 const ProjectDetail = ({ projectID }) => {
   const [project, setProject] = useState();
   const [loading, setLoading] = useState(true);
   const { name } = useInfoContext();
   const navigate = useNavigate();
-  const [bugList, setBugList] = useState([]);
-  const [bugLoading, setBugLoading] = useState(true);
 
   useEffect(() => {
     getProjectData(projectID)
@@ -40,10 +39,13 @@ const ProjectDetail = ({ projectID }) => {
   }, []);
 
   const handleDeleteProject = () => {
-    //todo
+    console.log("kya");
+    deleteProject(projectID, project.bugs);
+    navigate("/dashboard");
   };
 
   const handleAddBug = () => {
+    console.log("no");
     navigate(`/project/${projectID}/addbug`);
   };
   return (
