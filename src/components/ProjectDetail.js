@@ -106,6 +106,7 @@ const ProjectDetail = ({ projectID }) => {
           <Modal open={openModal} onClose={handleModalClose}>
             <Box sx={style}>
               <label>Project Title</label>
+              <br />
               <input
                 value={projectTitle}
                 onChange={(e) => {
@@ -113,7 +114,8 @@ const ProjectDetail = ({ projectID }) => {
                 }}
               />
               <br />
-              <label>project description</label>
+              <label>Project Description</label>
+              <br />
               <input
                 value={projectDescription}
                 onChange={(e) => {
