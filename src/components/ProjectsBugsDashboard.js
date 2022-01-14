@@ -70,7 +70,7 @@ const ProjectsBugsDashboard = () => {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="projecttablebody">
             {projectsArray.map((project) => (
               <TableRow
                 key={project._id}
@@ -108,7 +108,7 @@ const ProjectsBugsDashboard = () => {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="bugtablebody">
             {bugsArray.map((bug) => (
               <TableRow key={bug._id} onClick={() => handleBugClick(bug._id)}>
                 <TableCell align="center">{bug.bugTitle}</TableCell>
