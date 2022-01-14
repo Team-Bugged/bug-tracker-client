@@ -1,10 +1,12 @@
-import { getBugData, getProjectData } from "../components/ServerConnections";
-import { BugBar } from "../components/BugBar";
+import {
+  getBugData,
+  getProjectData,
+  getProjectIdForABug,
+} from "../components/ServerConnections";
 import { useEffect, useState } from "react";
 import { useInfoContext } from "../components/Context";
 import { useNavigate } from "react-router-dom";
-import BugList from "./BugList";
-import { deleteProject } from "../components/ServerConnections";
+import { deleteBug } from "../components/ServerConnections";
 
 const BugDetail = ({ bugID }) => {
   const [bug, setBug] = useState();
@@ -24,7 +26,9 @@ const BugDetail = ({ bugID }) => {
   }, []);
 
   const handleDeleteBug = () => {
-    //todo
+    deleteBug(bugID).then(() => {
+      navigate("/dashboard");
+    });
   };
 
   const handleAssignBug = () => {
