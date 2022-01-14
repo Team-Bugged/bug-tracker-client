@@ -13,7 +13,7 @@ export const AddProjectForm = () => {
     addProject(projectTitle, projectDescription).then(navigate("/dashboard"));
   };
   return (
-    <form className="projectForm">
+    <form className="addForm">
       <input
         placeholder="Project Title"
         value={projectTitle}
@@ -22,7 +22,6 @@ export const AddProjectForm = () => {
         }}
       />
       <input
-      className="descp"
         placeholder="Project Description"
         value={projectDescription}
         onChange={(input) => {

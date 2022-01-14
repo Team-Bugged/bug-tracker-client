@@ -16,7 +16,7 @@ export const AddBugForm = ({ projectID }) => {
     );
   };
   return (
-    <form>
+    <form className="addForm">
       <input
         placeholder="Bug Title"
         value={bugTitle}
@@ -37,6 +37,7 @@ export const AddBugForm = ({ projectID }) => {
           setBugSeverity(input.target.value);
         }}
       >
+       
         <option value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
@@ -48,7 +49,7 @@ export const AddBugForm = ({ projectID }) => {
           setBugDueDate(event.target.value);
         }}
       />
-      <button onClick={handleAddBugSubmit}>Submit</button>
+      <button className="save-btn" onClick={handleAddBugSubmit}>Submit</button>
     </form>
   );
 };
