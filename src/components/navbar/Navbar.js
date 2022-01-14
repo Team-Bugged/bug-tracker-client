@@ -1,6 +1,7 @@
 import "../../App.css";
 import { useInfoContext } from "../Context";
 import { useNavigate } from "react-router-dom";
+import { AppBar, Toolbar, Button, Typography, Box } from "@mui/material";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -13,12 +14,26 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar">
-        <ul>
-          <li>{name}</li>
-          <li>
-            <button onClick={handleLogOut}>Logout</button>
-          </li>
-        </ul>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar variant="dense">
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+                onClick={() => window.location.replace("/dashboard")}
+              >
+                Dashboard
+              </Typography>
+              <Typography variant="h6" color="inherit" component="div">
+                {name}
+              </Typography>
+              <Button variant="h6" color="inherit" onClick={handleLogOut}>
+                Logout
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Box>
       </div>
     </>
   );
