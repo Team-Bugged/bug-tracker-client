@@ -79,12 +79,28 @@ const ProjectDetail = ({ projectID }) => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Members assigned</Typography>
+          <Typography>Contributors</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Username</TableCell>
+                  <TableCell>Joined On</TableCell>
+                </TableRow>
+
+              </TableHead>
+            <TableBody>
+            <TableRow>
+              <TableCell>Username</TableCell>
+              <TableCell>Joined On</TableCell>
+            </TableRow>
+
+            </TableBody>
+            
+            </Table>
+            
           </Typography>
         </AccordionDetails>
       </Accordion>      
@@ -102,7 +118,7 @@ const ProjectDetail = ({ projectID }) => {
           </div>
         </div>
           
-          {/* <BugList bugs={project.bugs} /> */}
+          <BugList bugs={project.bugs} />
           
         </Paper>   
         
