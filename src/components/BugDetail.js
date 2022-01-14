@@ -10,6 +10,7 @@ import {
 } from "../components/ServerConnections";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
+import Navbar from "./navbar/Navbar";
 
 const BugDetail = ({ bugID }) => {
   const [bug, setBug] = useState();
@@ -87,8 +88,11 @@ const BugDetail = ({ bugID }) => {
         "Loading "
       ) : (
         <>
+          <Navbar />
           <Modal open={openModal} onClose={handleModalClose}>
             <Box sx={style}>
+              <label>Bug Title</label>
+              <br />
               <input
                 value={bugTitle}
                 onChange={(input) => {
@@ -96,6 +100,9 @@ const BugDetail = ({ bugID }) => {
                 }}
                 required
               />
+              <br />
+              <label>Bug Description</label>
+              <br />
               <input
                 value={bugDescription}
                 onChange={(input) => {
@@ -103,6 +110,9 @@ const BugDetail = ({ bugID }) => {
                 }}
                 required
               />
+              <br />
+              <label>Bug Severity</label>
+              <br />
               <select
                 required
                 value={bugSeverity}
@@ -114,6 +124,9 @@ const BugDetail = ({ bugID }) => {
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
               </select>
+              <br />
+              <label>Bug Duedate</label>
+              <br />
               <input
                 className="duedate"
                 type="date"
