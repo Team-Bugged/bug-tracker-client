@@ -2,6 +2,7 @@ import "../../App.css";
 import { useInfoContext } from "../Context";
 import { useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, Button, Typography, Box } from "@mui/material";
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -24,6 +25,9 @@ const Navbar = () => {
                 onClick={() => window.location.replace("/dashboard")}
               >
                 Dashboard
+              </Typography>
+              <Typography variant="h6" color="inherit">
+                <AccountCircle className="acc" fontSize="large"/>
               </Typography>
               <Typography variant="h6" color="inherit" component="div">
                 {name}

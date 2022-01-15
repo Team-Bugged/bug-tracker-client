@@ -56,7 +56,7 @@ const LoginForm = () => {
             <form className="login-form">
               <div>
                 <label for="email">
-                  <b>EMail</b>
+                  <b>Email</b>
                 </label>
                 <br />
                 <input
