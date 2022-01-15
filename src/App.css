@@ -53,18 +53,20 @@
   margin-bottom: 1em;
 }
 
-.addproject {
-  background-color: #c2fbd7;
+.green-btn {
+  background-color: #c2f0fb;
   border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
-    rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
-    rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
-    rgba(44, 187, 99, 0.15) 0 16px 32px;
+  box-shadow: rgba(44, 170, 187, 0.2) 0 -25px 18px -14px inset,
+    rgba(44, 146, 187, 0.15) 0 1px 2px, rgba(44, 146, 187, 0.15) 0 2px 4px,
+    rgba(44, 130, 187, 0.15) 0 4px 8px, rgba(44, 154, 187, 0.15) 0 8px 16px,
+    rgba(44, 130, 187, 0.15) 0 16px 32px;
   color: green;
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-  padding: 7px 20px;
+  padding: 7px 10px;
+  width: 150px;
+  margin:20px;
   text-decoration: none;
   transition: all 250ms;
   border: 0;
@@ -73,13 +75,14 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   margin-bottom: 10px;
+  
 }
 
-.addproject:hover {
-  box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
-    rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
-    rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
-    rgba(44, 187, 99, 0.25) 0 16px 32px;
+.green-btn:hover {
+  box-shadow: rgba(44, 130, 187, 0.35) 0 -25px 18px -14px inset,
+    rgba(44, 177, 187, 0.25) 0 1px 2px, rgba(44, 158, 187, 0.25) 0 2px 4px,
+    rgba(44, 123, 187, 0.25) 0 4px 8px, rgba(195, 223, 228, 0.25) 0 8px 16px,
+    rgba(44, 187, 187, 0.25) 0 16px 32px;
 }
 
 .mainrow {
@@ -109,9 +112,9 @@
 }
 
 select {
-  margin: 10px 20px;
-  /* width: 73%; */
+ 
   padding: 12px 20px;
+  margin: 5px 10px 20px 0;
   border: none;
   background-color: rgb(176, 225, 247);
 }
@@ -347,21 +350,22 @@ select {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.save-btn {
+/* .save-btn {
   padding: 10px 20px;
   width: 23%;
   background-color: rgb(55, 170, 219);
-}
+} */
 
 input {
   width: 73%;
   padding: 12px 20px;
-  margin: 5px 0;
+  margin: 5px 0 20px 0;
   box-sizing: border-box;
   background-color: rgb(176, 225, 247);
 
   border: none;
   border-bottom: 2px solid rgb(55, 170, 219);
+  border-radius: 100px;
 }
 input:focus {
   width: 100%;
@@ -382,15 +386,20 @@ input:focus {
 .bug-flex {
   display: flex;
   margin: 2em 0;
+  justify-content: space-evenly;
 }
 .bugpriority {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .duedate {
   width: 100%;
   border: none;
+}
+
+.css-1wnsr1i{
+  text-align: center;
 }
