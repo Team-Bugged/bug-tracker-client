@@ -2,6 +2,7 @@ import {
   getProjectData,
   updateProject,
   getBugsForAProject,
+  addDeveloper,
 } from "../components/ServerConnections";
 import Navbar from "./navbar/Navbar";
 import { useEffect, useState } from "react";
@@ -15,7 +16,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import {
   Table,
@@ -50,6 +51,9 @@ const ProjectDetail = ({ projectID }) => {
   };
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
+  const [addDeveloperInputDisplay, setAddDeveloperInputDisplay] =
+    useState(false);
+  const [developerUserName, setDeveloperUserName] = useState("");
 
   useEffect(() => {
     getProjectData(projectID)
@@ -98,6 +102,17 @@ const ProjectDetail = ({ projectID }) => {
       window.location.reload();
     });
   };
+
+  const handleAddDeveloper = () => {
+    if (addDeveloperInputDisplay) {
+      addDeveloper(developerUserName, projectID).then(() => {
+        window.location.reload();
+      });
+    }
+    // console.log(addDeveloperInputDisplay);
+    setAddDeveloperInputDisplay(!addDeveloperInputDisplay);
+    setDeveloperUserName("");
+  };
   return (
     <>
       {loading ? (
@@ -124,7 +139,9 @@ const ProjectDetail = ({ projectID }) => {
                 }}
               />
               <br />
-              <button className="green-btn" onClick={handleEditProjectSubmit}>Update</button>
+              <button className="green-btn" onClick={handleEditProjectSubmit}>
+                Update
+              </button>
             </Box>
           </Modal>
           <Navbar />
@@ -181,17 +198,20 @@ const ProjectDetail = ({ projectID }) => {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell><AccountCircleIcon/> </TableCell>
-                          <TableCell>{project.projectOwner}</TableCell>   
+                          <TableCell>
+                            <AccountCircleIcon />
+                          </TableCell>
+                          <TableCell>{project.projectOwner}</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
                         {project.projectDevelopers.map((username) => {
                           return (
                             <TableRow>
-                              <TableCell><AccountCircleIcon/> </TableCell>
+                              <TableCell>
+                                <AccountCircleIcon />
+                              </TableCell>
                               <TableCell>{username}</TableCell>
-                              
                             </TableRow>
                           );
                         })}
@@ -201,7 +221,19 @@ const ProjectDetail = ({ projectID }) => {
                 </AccordionDetails>
               </Accordion>
             </div>
-
+            <Button onClick={handleAddDeveloper} variant="contained">
+              Add Developers
+            </Button>
+            {addDeveloperInputDisplay ? (
+              <input
+                onChange={(e) => {
+                  setDeveloperUserName(e.target.value);
+                }}
+                value={developerUserName}
+              />
+            ) : (
+              <></>
+            )}
             <div>
               <div>
                 <p>
