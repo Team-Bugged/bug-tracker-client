@@ -221,16 +221,22 @@ const ProjectDetail = ({ projectID }) => {
                 </AccordionDetails>
               </Accordion>
             </div>
-            <Button onClick={handleAddDeveloper} variant="contained">
-              Add Developers
-            </Button>
-            {addDeveloperInputDisplay ? (
-              <input
-                onChange={(e) => {
-                  setDeveloperUserName(e.target.value);
-                }}
-                value={developerUserName}
-              />
+            {name === project.projectOwner ? (
+              <>
+                <Button onClick={handleAddDeveloper} variant="contained">
+                  Add Developers
+                </Button>
+                {addDeveloperInputDisplay ? (
+                  <input
+                    onChange={(e) => {
+                      setDeveloperUserName(e.target.value);
+                    }}
+                    value={developerUserName}
+                  />
+                ) : (
+                  <></>
+                )}
+              </>
             ) : (
               <></>
             )}
