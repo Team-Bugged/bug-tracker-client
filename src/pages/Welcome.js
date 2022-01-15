@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BugReportIcon from "@mui/icons-material/BugReport";
 
 const Welcome = () => {
   return (
@@ -8,6 +9,11 @@ const Welcome = () => {
           <div className="login">
             <div className="login-header">
               <h1>Welcome to Bug-Tracker</h1>
+              <div className="welcomeicon">
+                <BugReportIcon style={{fontSize:50}}/>
+              </div>
+              
+              
               <Link to="/login">
                 <button className="signin-btn">Login</button>
               </Link>

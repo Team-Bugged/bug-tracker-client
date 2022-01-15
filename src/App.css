@@ -199,6 +199,7 @@ select {
   z-index: 9;
   border: 0;
   margin-bottom: 20px;
+  border-radius: 100px;
 }
 
 .signin-btn:hover {
@@ -234,6 +235,7 @@ select {
   border: 0;
   transition: box-shadow 0.2s;
   margin-bottom: 20px;
+  border-radius: 100px;
 }
 
 .signup-btn:hover {
@@ -256,6 +258,7 @@ select {
   -webkit-user-select: none;
   touch-action: manipulation;
   margin-bottom: 10px;
+  border-radius: 100px;
 }
 
 .dashoboard-btn:hover {
@@ -402,4 +405,19 @@ input:focus {
 
 .css-1wnsr1i{
   text-align: center;
+}
+.welcomeicon{
+
+  width: 100px;
+  height: 80px;
+  border-radius: 115px;
+  background-color: #19add2;
+  margin-left: 35%;
+  margin-bottom: 10%;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.acc{
+  margin: 10px 5px 0 0;
 }

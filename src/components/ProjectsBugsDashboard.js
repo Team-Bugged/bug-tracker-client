@@ -55,7 +55,7 @@ const ProjectsBugsDashboard = () => {
       </Paper>
       <Paper className="detailpaper" variant="outlined">
         <button className="green-btn" onClick={handleAddProject}>
-          <AddIcon fontSize="small" />
+          <AddIcon className="addicon" fontSize="small" color="primary" />
           Add Project
         </button>
         <Table>
