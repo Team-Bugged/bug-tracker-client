@@ -356,3 +356,25 @@ export const closeProject = async (projectID) => {
     return err;
   }
 };
+
+export const addDeveloper = async (username, projectID) => {
+  let response;
+  try {
+    response = await axios.post(
+      "http://localhost:5000/addDeveloper",
+      {
+        developer: username,
+        projectID: projectID,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
