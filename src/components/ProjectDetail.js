@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import {
   Table,
@@ -123,7 +124,7 @@ const ProjectDetail = ({ projectID }) => {
                 }}
               />
               <br />
-              <button onClick={handleEditProjectSubmit}>Update</button>
+              <button className="green-btn" onClick={handleEditProjectSubmit}>Update</button>
             </Box>
           </Modal>
           <Navbar />
@@ -180,16 +181,17 @@ const ProjectDetail = ({ projectID }) => {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>{project.projectOwner}</TableCell>
-                          <TableCell>Joined On</TableCell>
+                          <TableCell><AccountCircleIcon/> </TableCell>
+                          <TableCell>{project.projectOwner}</TableCell>   
                         </TableRow>
                       </TableHead>
                       <TableBody>
                         {project.projectDevelopers.map((username) => {
                           return (
                             <TableRow>
+                              <TableCell><AccountCircleIcon/> </TableCell>
                               <TableCell>{username}</TableCell>
-                              <TableCell>Joined On</TableCell>
+                              
                             </TableRow>
                           );
                         })}

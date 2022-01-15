@@ -66,7 +66,7 @@ export const AddBugForm = ({ projectID }) => {
         </div>
         
         
-        <button className="save-btn" onClick={handleAddBugSubmit}>Save</button>
+        <button className="green-btn" onClick={handleAddBugSubmit}>Save</button>
       </form>
     </>
   );

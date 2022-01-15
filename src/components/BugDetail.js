@@ -12,6 +12,23 @@ import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import Navbar from "./navbar/Navbar";
 
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Paper,
+  Button,
+  Stack,
+  Typography
+} from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 const BugDetail = ({ bugID }) => {
   const [bug, setBug] = useState();
   const [loading, setLoading] = useState(true);
@@ -88,7 +105,6 @@ const BugDetail = ({ bugID }) => {
         "Loading "
       ) : (
         <>
-          <Navbar />
           <Modal open={openModal} onClose={handleModalClose}>
             <Box sx={style}>
               <label>Bug Title</label>
@@ -136,31 +152,113 @@ const BugDetail = ({ bugID }) => {
                 }}
                 required
               />
-              <button onClick={handleEditBugSubmit}>Update</button>
+              <button className="green-btn" onClick={handleEditBugSubmit}>Update</button>
             </Box>
           </Modal>
-          <div>
-            <h1>{bug?.bugTitle}</h1>
-          </div>
-          <div>
-            <p>{bug?.bugDescription}</p>
-          </div>
-          <div>
-            <p>{bug?.createdBy}</p>
-          </div>
-          <div>
-            <p>{bug?.bugStatus}</p>
-          </div>
-          <div>
-            <p>{bug?.bugSeverity}</p>
-          </div>
-          <div>
-            <p>{bug.assignedTo}</p>
-          </div>
-          <div>
-            <p>{bug.bugDueDate}</p>
-          </div>
-          <div>
+          <Navbar />
+          <Paper className="projectdescp">
+            <div>
+              <h1>{bug?.bugTitle}</h1>
+              <p className="statusdiv">
+                <i>{bug?.bugDescription}</i>
+              </p>
+            </div>
+
+            <Stack spacing={2} direction="row">
+            {bug.bugStatus !== "Closed" ? (
+              <>
+                <Button  onClick={handleAssignBug} variant="contained" color="primary">Assing Bug</Button>
+                {assignInput ? (
+                  <input
+                    placeholder="Enter UserName"
+                    value={assignUserName}
+                    onChange={(event) => {
+                      setAssignUserName(event.target.value);
+                    }}
+                  />
+                ) : (
+                  <></>
+                )}
+
+                {bug?.assignedTo === name || bug.createdBy === name ? (
+                  <Button onClick={handleCloseBug} variant="contained" color="error">Close Bug</Button>
+                ) : (
+                  <></>
+                )}
+              </>
+            ) : (
+              <></>
+            )}
+            {bug?.createdBy === name ? (
+              <>
+                <Button onClick={handleDeleteBug} variant="contained" color="error">Delete</Button>
+                <Button onClick={handleEditBugDetails} variant="contained" color="primary">Update Bug</Button>
+              </>
+            ) : (
+              <></>
+            )} 
+              
+              
+            </Stack>
+          </Paper>
+          <Paper className="projectpaper" variant="outlined">
+            <div>
+              <Accordion className="membersacc">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>Contributors</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <Table>
+                      
+                      <TableBody>
+                        {bug.assignedTo.map((name) => {
+                          return (
+                            <TableRow>
+                              <TableCell><AccountCircleIcon/></TableCell>
+                              <TableCell>{name}</TableCell>
+                              
+                            </TableRow>
+                          );
+                        })}
+                      </TableBody>
+                    </Table>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </div>
+
+            <div>
+              <div>
+                <p>
+                  <strong>Bug Severity: {bug?.bugSeverity}</strong>
+                </p>
+              </div>
+              <div>
+                Status: <p className="statusdiv">{bug?.bugStatus}</p>
+              </div>
+              <div>
+                <p>
+                  <strong>Created By: {bug?.createdBy}</strong>
+                </p>
+              </div>
+              <div>
+                <p>
+                  <strong>Due Date: {bug.bugDueDate}</strong>
+                </p>
+              </div>
+              
+            </div>
+          </Paper>
+        </>
+      )}
+          
+  
+         {/*  <div>
             {bug.bugStatus !== "Closed" ? (
               <>
                 <button onClick={handleAssignBug}>Assing Bug</button>
@@ -192,11 +290,10 @@ const BugDetail = ({ bugID }) => {
               </>
             ) : (
               <></>
-            )}
-          </div>
-        </>
-      )}
-    </>
+            )} 
+          </div>*/}
+      
+      </>
   );
 };
 

@@ -8,15 +8,18 @@ const Welcome = () => {
           <div className="login">
             <div className="login-header">
               <h1>Welcome to Bug-Tracker</h1>
-              <a href="/login">
+              <Link to="/login">
                 <button className="signin-btn">Login</button>
-              </a>
-              <a href="/Register">
-                <button className="signup-btn">Register</button>
-              </a>
-              <a href="/login">
+              </Link>
+              <Link to="/register">
+              <button className="signup-btn">Register</button></Link>
+                
+             
+              <Link to="/dashboard" >
                 <button className="dashboard-btn">Dashboard</button>
-              </a>
+              </Link>
+                
+              
             </div>
           </div>
         </div>

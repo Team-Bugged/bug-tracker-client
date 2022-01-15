@@ -31,7 +31,7 @@ export const AddProjectForm = () => {
             setProjectDescription(input.target.value);
           }}
         />
-        <button className="save-btn" onClick={handleAddProjectSubmit}>
+        <button className="green-btn" onClick={handleAddProjectSubmit}>
           Save
         </button>
       </form>

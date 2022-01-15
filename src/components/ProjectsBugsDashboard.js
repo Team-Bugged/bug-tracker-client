@@ -54,7 +54,7 @@ const ProjectsBugsDashboard = () => {
         </div>
       </Paper>
       <Paper className="detailpaper" variant="outlined">
-        <button className="addproject" onClick={handleAddProject}>
+        <button className="green-btn" onClick={handleAddProject}>
           <AddIcon fontSize="small" />
           Add Project
         </button>
