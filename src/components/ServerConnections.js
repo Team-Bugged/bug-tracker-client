@@ -1,9 +1,10 @@
 const axios = require("axios").default;
+const URL = "https://bug-tracker-sever.herokuapp.com";
 
 export const registerUser = async (name, username, userEmail, userPassword) => {
   let response;
   try {
-    response = await axios.post("http://localhost:5000/signup", {
+    response = await axios.post(`${URL}/signup`, {
       name: name,
       username: username,
       email: userEmail,
@@ -18,7 +19,7 @@ export const registerUser = async (name, username, userEmail, userPassword) => {
 export const loginUser = async (userEmail, userPassword) => {
   let response;
   try {
-    response = await axios.post("http://localhost:5000/login", {
+    response = await axios.post(`${URL}/login`, {
       email: userEmail,
       password: userPassword,
     });
@@ -32,7 +33,7 @@ export const getUserData = async () => {
   let response;
   console.log(localStorage.getItem("token"));
   try {
-    response = await axios.get("http://localhost:5000/getInfo", {
+    response = await axios.get(`${URL}/getInfo`, {
       headers: {
         authorization: "Bearer " + localStorage.getItem("token"),
       },
@@ -46,7 +47,7 @@ export const getUserData = async () => {
 export const getProjectData = async (projectID) => {
   let response;
   try {
-    response = await axios.get("http://localhost:5000/getprojectinfo", {
+    response = await axios.get(`${URL}/getprojectinfo`, {
       params: {
         projectID: projectID,
       },
@@ -61,7 +62,7 @@ export const getProjectData = async (projectID) => {
 export const getBugData = async (id) => {
   let response;
   try {
-    response = await axios.get("http://localhost:5000/getBugInfo", {
+    response = await axios.get(`${URL}/getBugInfo`, {
       params: {
         id: id,
       },
@@ -75,7 +76,7 @@ export const getBugData = async (id) => {
 export const getProjects = async () => {
   let response;
   try {
-    response = await axios.get("http://localhost:5000/getprojectsforauser", {
+    response = await axios.get(`${URL}/getprojectsforauser`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -90,7 +91,7 @@ export const getProjects = async () => {
 export const getBugs = async () => {
   let response;
   try {
-    response = await axios.get("http://localhost:5000/getbugsforauser", {
+    response = await axios.get(`${URL}/getbugsforauser`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -105,7 +106,7 @@ export const getBugs = async () => {
 export const getBugsForAProject = async (projectID) => {
   let response;
   try {
-    response = await axios.get("http://localhost:5000/getbugsforaproject", {
+    response = await axios.get(`${URL}/getbugsforaproject`, {
       params: {
         projectID: projectID,
       },
@@ -123,7 +124,7 @@ export const addProject = async (
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/addproject",
+      `${URL}/addproject`,
       {
         projectTitle: projectTitleParam,
         projectDescription: projectDescriptionParam,
@@ -151,7 +152,7 @@ export const addBug = async (
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/addbug",
+      `${URL}/addbug`,
       {
         projectID: projectID,
         bugTitle: bugTitle,
@@ -176,7 +177,7 @@ export const deleteProject = async (projectID, bugs) => {
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/deleteproject",
+      `${URL}/deleteproject`,
       {
         projectID: projectID,
         bugs: bugs,
@@ -198,7 +199,7 @@ export const getProjectIdForABug = async (bugID) => {
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/getprojectidforabug",
+      `${URL}/getprojectidforabug`,
       {
         bugID: bugID,
       },
@@ -218,7 +219,7 @@ export const deleteBug = async (bugID) => {
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/deletebug",
+      `${URL}/deletebug`,
       {
         bugID: bugID,
       },
@@ -239,7 +240,7 @@ export const assignBug = async (bugID, userName) => {
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/assignbug",
+      `${URL}/assignbug`,
       {
         bugID: bugID,
         assignedTo: userName,
@@ -261,7 +262,7 @@ export const closeBug = async (bugID) => {
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/closebug",
+      `${URL}/closebug`,
       {
         bugID: bugID,
       },
@@ -286,7 +287,7 @@ export const updateProject = async (
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/editproject",
+      `${URL}/editproject`,
       {
         projectID: projectID,
         projectTitle: projectTitle,
@@ -315,7 +316,7 @@ export const updateBug = async (
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/editbug",
+      `${URL}/editbug`,
       {
         bugID: bugID,
         bugTitle: bugTitle,
@@ -340,7 +341,7 @@ export const closeProject = async (projectID) => {
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/closeProject",
+      `${URL}/closeProject`,
       {
         projectID: projectID,
       },
@@ -361,7 +362,7 @@ export const addDeveloper = async (username, projectID) => {
   let response;
   try {
     response = await axios.post(
-      "http://localhost:5000/addDeveloper",
+      `${URL}/addDeveloper`,
       {
         developer: username,
         projectID: projectID,
