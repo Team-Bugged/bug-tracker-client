@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { loginUser, getUserData } from "../ServerConnections";
 import { useNavigate } from "react-router-dom";
 import { useInfoContext } from "../Context";
+import { CircularProgress } from "@mui/material";
 
 const LoginForm = () => {
   const { setName, setIsLoggedIn } = useInfoContext();
@@ -10,6 +11,7 @@ const LoginForm = () => {
   const [disabledFlag, setDisabledFlag] = useState(true);
   // const cookies = new Cookies();
   const navigate = useNavigate();
+  const [isLoading, setisLoading] = useState(false);
 
   const handleEmailChange = (input) => {
     setEmail(input.target.value);
@@ -20,7 +22,7 @@ const LoginForm = () => {
   };
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-
+    setisLoading(true);
     loginUser(email, password)
       .then((token) => {
         localStorage.setItem("token", `${token}`);
@@ -50,8 +52,8 @@ const LoginForm = () => {
         <div className="form">
           <div className="login">
             <div className="login-header">
-              <h3>LOGIN</h3>
-              <p>Please enter your credentials to login.</p>
+              <h3>Sign In</h3>
+              <p>Please enter your credentials to signin.</p>
             </div>
             <form className="login-form">
               <div>
@@ -84,7 +86,7 @@ const LoginForm = () => {
                   disabled={disabledFlag}
                   onClick={handleLoginSubmit}
                 >
-                  Sign In
+                  {isLoading ? <CircularProgress /> : "Sign In"}
                 </button>
               </div>
             </form>

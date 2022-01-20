@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { registerUser } from "../ServerConnections";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -9,6 +10,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [disabledFlag, setDisabledFlag] = useState(true);
+  const [isLoading, setisLoading] = useState(false);
   const navigate = useNavigate();
 
   let passwordMatch = password === confirmPassword ? true : false;
@@ -49,7 +51,7 @@ const RegisterForm = () => {
 
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
-
+    setisLoading(true);
     if (!passwordMatch) {
       alert("Password and current password not matched");
     }
@@ -135,7 +137,7 @@ const RegisterForm = () => {
                   disabled={disabledFlag}
                   onClick={handleRegisterSubmit}
                 >
-                  Sign Up
+                  {isLoading ? <CircularProgress /> : "Sign Up"}
                 </button>
               </div>
             </form>
