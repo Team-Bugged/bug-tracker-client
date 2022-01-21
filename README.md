@@ -1,6 +1,8 @@
 # Bug Tracker
 
+Bug Tracking System made with MERN Stack.
 
+# Description
 
 Bug Tracker is a web application that keeps track of reported software bugs in software development projects. The database is implemented using mongoDB. The web application involves features such as CRUD operations on projects and its associated bugs.
 
@@ -13,18 +15,23 @@ Both project and bugs can be deleted and updated. Deleting a project necessarily
 <!-- Steps to reproduce and additional information. -->
 <!-- Projects can be filtered based on status , start date and number of bugs whereas bugs can be filtered based on bug status, severity, start date, etc. -->
 
-ER Diagram: 
+# ER Diagram: 
 
 ![newerdiagram](https://user-images.githubusercontent.com/57508390/150476647-93c2353c-24dd-44d8-a761-d1ab8d29fb17.png)
 
-# To run on browser 
+# DEMO
 
-Step 1: Run the server on your browser: <a target="_blank" href="https://bug-tracker-sever.herokuapp.com/">Click here</a>
+ To run on browser 
+
+Step 1: Run the server on your browser: <a target="_blank" href="https://bug-tracker-sever.herokuapp.com/">Click here</a> <br>
 Step 2: Finally, <a target="_blank" href="https://bug-tracker-cliet.herokuapp.com/">Click here</a> to view our application
 
-# To run locally
+To run locally
 
 - `git clone`
 - `npm install`
 - `npm start`
 - visit `localhost:3000` on browser
+
+# Developer Credits
+
