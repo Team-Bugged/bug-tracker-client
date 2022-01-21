@@ -17,16 +17,17 @@ Both project and bugs can be deleted and updated. Deleting a project necessarily
 
 # ER Diagram: 
 
-![newerdiagram](https://user-images.githubusercontent.com/57508390/150476647-93c2353c-24dd-44d8-a761-d1ab8d29fb17.png)
+![image](https://user-images.githubusercontent.com/57508390/150481035-32190fb1-459d-4fe5-ac90-e891ca768409.png)
+
 
 # DEMO
 
- To run on browser 
+## To run on browser 
 
 Step 1: Run the server on your browser: <a target="_blank" href="https://bug-tracker-sever.herokuapp.com/">Click here</a> <br>
 Step 2: Finally, <a target="_blank" href="https://bug-tracker-cliet.herokuapp.com/">Click here</a> to view our application
 
-To run locally
+## To run locally
 
 - `git clone`
 - `npm install`
@@ -34,6 +35,9 @@ To run locally
 - visit `localhost:3000` on browser
 
 # Developer Credits
-https://github.com/Sahil-101
+<a href="https://github.com/Sahil-101">Sahil</a>
+<a href="https://github.com/siddharthsharma19">Siddharth Sharma </a>
+<a href="https://github.com/vridhi-vk">Vridhi Kamath </a>
+
 
 
