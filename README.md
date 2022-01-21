@@ -19,6 +19,10 @@ Both project and bugs can be deleted and updated. Deleting a project necessarily
 
 ![image](https://user-images.githubusercontent.com/57508390/150481035-32190fb1-459d-4fe5-ac90-e891ca768409.png)
 
+# We learnt how to use the following Tech Stack
+![image](https://user-images.githubusercontent.com/57508390/150481923-79cc2330-1999-4588-a61f-eea5cc143559.png= 100X20)
+
+
 
 # DEMO
 
