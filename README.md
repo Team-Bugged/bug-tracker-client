@@ -34,4 +34,6 @@ To run locally
 - visit `localhost:3000` on browser
 
 # Developer Credits
+https://github.com/Sahil-101
+
 
