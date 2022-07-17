@@ -39,7 +39,7 @@ const BugListMaterialUI = ({ bugsArray }) => {
         </TableHead>
         <TableBody className="bugtablebody">
           {bugsArray.map((bug) => (
-            <TableRow key={bug._id} onClick={() => handleBugClick(bug._id)}>
+            <TableRow key={bug._id} className="bugtablerow" onClick={() => handleBugClick(bug._id)}>
               <TableCell align="center">{bug.bugTitle}</TableCell>
               <TableCell align="center">{bug.bugSeverity}</TableCell>
               <TableCell align="center">{bug.createdBy}</TableCell>

@@ -377,9 +377,16 @@ input:focus {
 .projecttablebody {
   background-color: rgb(226, 247, 255);
 }
+.projecttablerow{
+  cursor: pointer;
+}
 
 .bugtablebody {
   background-color: rgb(255, 226, 226);
+}
+
+.bugtablerow{
+  cursor: pointer;
 }
 
 .navbar {
@@ -420,4 +427,8 @@ input:focus {
 
 .acc{
   margin: 10px 5px 0 0;
+}
+
+.toDashboard{
+  cursor:pointer;
 }

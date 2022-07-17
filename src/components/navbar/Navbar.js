@@ -21,6 +21,7 @@ const Navbar = () => {
               <Typography
                 variant="h6"
                 component="div"
+                className="toDashboard"
                 sx={{ flexGrow: 1 }}
                 onClick={() => window.location.replace("/dashboard")}
               >
