@@ -1,6 +1,10 @@
 {
   "name": "bug-tracker-client",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.12.2"
+    },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
